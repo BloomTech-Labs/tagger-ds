@@ -1,1 +1,1 @@
-web:gunicorn --workers=2 app:application -t 120
+web:gunicorn app:application -t 120
