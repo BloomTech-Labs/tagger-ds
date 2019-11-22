@@ -1,1 +1,1 @@
-web:gunicorn app:application -t 120
+web:gunicorn run:application -t 120
