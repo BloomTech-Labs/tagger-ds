@@ -105,3 +105,6 @@ venv.bak/
 
 # Private info
 Jay/Data/
+
+# Model files (too large)
+API/*.joblib
