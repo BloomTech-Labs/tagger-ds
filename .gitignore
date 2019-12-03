@@ -105,3 +105,6 @@ venv.bak/
 
 # Private info
 Jay/Data/
+
+# Too Big To Push
+API/*.joblib
