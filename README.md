@@ -1,10 +1,4 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
-# 1️⃣ Title of project goes here
+# Tagger - Smarter Email
 
 You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
 
@@ -33,8 +27,6 @@ You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here
 1️⃣ [Trello Board](https://trello.com/b/39GG7MwY/tagger-smarter-email)
 
 1️⃣ [Product Canvas](https://www.notion.so/Tagger-Smarter-Email-01673a2ed9e54cb8834b959ad39f7de2)
-
-🚫 Replace lorem ipsum with a description of your project
 
 The idea of this project was to develop an email app similar to Gmail, Edison mail, Yahoo mail, etc. but with better organization to help you find emails easier. For the DS, we built an APi that generates tags for all emails so they can be put into folders by the BE.
 
