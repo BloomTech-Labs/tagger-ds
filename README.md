@@ -12,8 +12,10 @@ You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here
 
 🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
-|[Avraham Jacobsohn](https://github.com/noreallyimfine)  |  [John Morrison](https://github.com/)  |  [Samuel Hepner](https://github.com/SamH3pn3r)        |   
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
+|[Avraham Jacobsohn](https://github.com/noreallyimfine)  |  
+[John Morrison](https://github.com/)  |  
+[Samuel Hepner](https://github.com/SamH3pn3r)        |   
+| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | 
 | 
                     [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/noreallyimfine)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/johnmorrison)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/SamH3pn3r)                  |
