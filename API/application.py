@@ -1,19 +1,30 @@
 from flask import Flask, request, jsonify
 from joblib import load
 from nltk.tokenize.regexp import regexp_tokenize
-from functions import clean_text, regnltk_tokenize
+from main import clean_text, tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.stem import WordNetLemmatizer
 import nltk
-# nltk.download('wordnet')
+import pickle
 
+
+# Found solution at https://stackoverflow.com/questions/50465106/attributeerror-when-reading-a-pickle-file
+class MyCustomUnpickler(pickle.Unpickler):
+    def find_class(self, module, name):
+        if module == "__main__":
+            module = "application"
+        return super().find_class(module, name)
+
+with open('vect.pkl', 'rb') as f:
+    unpickler = MyCustomUnpickler(f)
+    vect = unpickler.load()
 
 application = Flask(__name__)
 
 lemmatizer = WordNetLemmatizer()
-vect = load('vect.joblib')
-encoder = load('labeller.joblib')
-model = load('randomforest.joblib')
+tokeni_zer = tokenize
+encoder = load('labeller.pkl')
+model = load('randomforest.pkl')
 
 def tag_email(text):
     text = vect.transform([text])

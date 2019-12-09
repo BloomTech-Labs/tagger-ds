@@ -1,5 +1,5 @@
-from nltk.tokenize.regexp import regexp_tokenize
 from nltk.stem import WordNetLemmatizer
+from nltk.tokenize.regexp import regexp_tokenize
 
 
 # A function that removes all unnecessary puncuation, html code, and/or any apostrophes lying around
@@ -18,8 +18,9 @@ def clean_text(text):
     
     return text
 
-def regnltk_tokenize(text):
-    lemmatizer = WordNetLemmatizer()
-    text = clean_text(text)
-    words = regexp_tokenize(text, pattern = '\s+', gaps = True)
-    return [lemmatizer.lemmatize(word) for word in words if (len(word) >= 3)]
+class tokenize:
+    def regnltk_tokenize(text):
+        lemmatizer = WordNetLemmatizer()
+        text = clean_text(text)
+        words = regexp_tokenize(text, pattern = '\s+', gaps = True)
+        return [lemmatizer.lemmatize(word) for word in words if (len(word) >= 3)]
