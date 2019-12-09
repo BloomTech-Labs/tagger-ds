@@ -64,7 +64,7 @@ Languages: JSON, Python, add more later...
 🚫  Add to or delete source links as needed for your project
 
 
--   [Gmail emails from private emails]
+-   Private E-mails
 
 ### Python Notebooks
 
