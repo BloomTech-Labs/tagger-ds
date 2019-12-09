@@ -30,10 +30,9 @@ You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here
 
 ## Project Overview
 
+1️⃣ [Trello Board](https://trello.com/b/39GG7MwY/tagger-smarter-email)
 
-1️⃣ [Trello Board](🚫add link to trello board here)
-
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://www.notion.so/Tagger-Smarter-Email-01673a2ed9e54cb8834b959ad39f7de2)
 
 🚫 Replace lorem ipsum with a description of your project
 
@@ -47,7 +46,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 ### Tech Stack
 
-🚫 List all of the languages, frameworks, services, etc used here.
+Languages: JSON, Python, add more later...
 
 ### 2️⃣ Predictions
 
@@ -62,14 +61,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 -   Explanatory Variable 5
 
 ### Data Sources
-🚫  Add to or delete souce links as needed for your project
+🚫  Add to or delete source links as needed for your project
 
 
--   [Source 1] (🚫add link to python notebook here)
--   [Source 2] (🚫add link to python notebook here)
--   [Source 3] (🚫add link to python notebook here)
--   [Source 4] (🚫add link to python notebook here)
--   [Source 5] (🚫add link to python notebook here)
+-   [Gmail emails from private emails]
 
 ### Python Notebooks
 
