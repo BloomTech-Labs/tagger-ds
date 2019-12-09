@@ -50,7 +50,7 @@ Languages: JSON, Python, add more later...
 
 ### 2️⃣ Predictions
 
-🚫 Describe your models here
+The DS API takes in a JSON object of an email, generates a tag, and spits out a JSON object with the previous email information + tag. The current API is using TfidfVectorizer, NLTK wordnet lemmatizer, regexp_tokenize, and a random forest classifier model.
 
 ### 2️⃣ Explanatory Variables
 
