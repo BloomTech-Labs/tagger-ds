@@ -10,11 +10,11 @@ You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here
 
 ## 5️⃣ Contributors
 |[Avraham Jacobsohn](https://github.com/noreallyimfine)  |  
-[John Morrison](https://github.com/)  |  
+[John Morrison](https://github.com/JohnMorrison)  |  
 [Samuel Hepner](https://github.com/SamH3pn3r)        |   
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | 
-|                 [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJJJCQN4R-3d9845ab1b54-512" width = "200" />](https://github.com/noreallyimfine)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/johnmorrison)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width = "200" />](https://github.com/SamH3pn3r)                       |       
-|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/noreallyimfine)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/johnmorrison)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/SamH3pn3r)                  |
+|                 [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJJJCQN4R-3d9845ab1b54-512" width = "200" />](https://github.com/noreallyimfine)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/JohnMorrison)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width = "200" />](https://github.com/SamH3pn3r)                       |       
+|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/noreallyimfine)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/JohnMorrison)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/SamH3pn3r)                  |
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/avraham-jacobsohn-b88b4526/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/johnjmorrison/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/samuel-hepner-7451b7133/) |
 
 
