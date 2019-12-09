@@ -61,8 +61,6 @@ Languages: JSON, Python, add more later...
 -   Explanatory Variable 5
 
 ### Data Sources
-🚫  Add to or delete source links as needed for your project
-
 
 -   Private E-mails
 
