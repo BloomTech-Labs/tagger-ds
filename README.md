@@ -1,6 +1,6 @@
 # Tagger - Smarter Email
 
-You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+You can find the project at [TaggerHQ](https://taggerhq.com/).
 
 ## 5️⃣ Contributors
 |[Avraham Jacobsohn](https://github.com/noreallyimfine)  |  
