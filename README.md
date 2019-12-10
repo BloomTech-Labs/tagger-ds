@@ -22,14 +22,14 @@ You can find the project at [TaggerHQ](https://taggerhq.com/).
 
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/39GG7MwY/tagger-smarter-email)
+[Trello Board](https://trello.com/b/39GG7MwY/tagger-smarter-email)
 
-1️⃣ [Product Canvas](https://www.notion.so/Tagger-Smarter-Email-01673a2ed9e54cb8834b959ad39f7de2)
+[Product Canvas](https://www.notion.so/Tagger-Smarter-Email-01673a2ed9e54cb8834b959ad39f7de2)
 
 The idea of this project was to develop an email app similar to Gmail, Edison mail, Yahoo mail, etc. but with better organization to help you find emails easier. For the DS, we built an API that generates tags for all emails so they can be put into folders by the BE.
 
 
-1️⃣ [Tagger - Smarter Email](https://taggerhq.com/)
+[Tagger - Smarter Email](https://taggerhq.com/)
 
 ### Tech Stack
 
@@ -37,11 +37,11 @@ The idea of this project was to develop an email app similar to Gmail, Edison ma
  -   Libraries: Pandas, Scikit-Learn, Pickle, NLTK, and Flask
  -   Services: Flask and AWS EB
 
-### 2️⃣ Predictions
+### Predictions
 
 The DS API takes in a JSON object of an email, generates a tag, and spits out a JSON object with the previous email information + tag. The current API is using TfidfVectorizer, NLTK wordnet Lemmatizer, regexp_tokenize, and a Random Forest Classifier model.
 
-### 2️⃣ Explanatory Variables
+### Explanatory Variables
 
 -   Text of the emails 
 
@@ -58,7 +58,7 @@ The DS API takes in a JSON object of an email, generates a tag, and spits out a 
 [Flask API](https://github.com/Lambda-School-Labs/tagger-ds/blob/sam-branch/API/application.py)
 
 
-### 3️⃣ How to connect to the data API
+### How to connect to the data API
 
 Send a POST request to http://tags2.us-east-2.elasticbeanstalk.com/api/tags with the arguments {'id', 'sender', 'subject', 'message'}
 
