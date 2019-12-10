@@ -2,7 +2,7 @@
 
 You can find the project at [TaggerHQ](https://taggerhq.com/).
 
-## 5️⃣ Contributors
+## Contributors
 |[Avraham Jacobsohn](https://github.com/noreallyimfine)  |  
 [John Morrison](https://github.com/JohnMorrisonn)  |  
 [Samuel Hepner](https://github.com/SamH3pn3r)        |   
@@ -35,7 +35,9 @@ The idea of this project was to develop an email app similar to Gmail, Edison ma
 
 ### Tech Stack
 
-Languages: JSON, Python, Pandas, Scikit-Learn, Flask, AWS EB
+Languages: JSON, Python
+Libraries: Pandas, Scikit-Learn, Pickle, NLTK, and Flask
+Services: Flask and AWS EB
 
 ### 2️⃣ Predictions
 
