@@ -43,11 +43,7 @@ The DS API takes in a JSON object of an email, generates a tag, and spits out a 
 
 ### 2️⃣ Explanatory Variables
 
--   Explanatory Variable 1
--   Explanatory Variable 2
--   Explanatory Variable 3
--   Explanatory Variable 4
--   Explanatory Variable 5
+-   Text of the emails 
 
 ### Data Sources
 
