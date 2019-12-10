@@ -51,17 +51,12 @@ The DS API takes in a JSON object of an email, generates a tag, and spits out a 
 
 ### Python Notebooks
 
-🚫  Add to or delete python notebook links as needed for your project
-
 [Functions for gathering the emails](https://github.com/Lambda-School-Labs/tagger-ds/blob/master/Jay/email_functions.ipynb)
 
 [Model Hyperparameter Optimization and Training](https://github.com/Lambda-School-Labs/tagger-ds/blob/sam-branch/labs_sam(3).ipynb)
 
 [Flask API](https://github.com/Lambda-School-Labs/tagger-ds/blob/sam-branch/API/application.py)
 
-### 3️⃣ How to connect to the web API
-
-🚫 List directions on how to connect to the API here
 
 ### 3️⃣ How to connect to the data API
 
