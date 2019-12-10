@@ -13,8 +13,6 @@ You can find the project at [TaggerHQ](https://taggerhq.com/).
 
 
 
-🚫 5️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
@@ -31,13 +29,13 @@ You can find the project at [TaggerHQ](https://taggerhq.com/).
 The idea of this project was to develop an email app similar to Gmail, Edison mail, Yahoo mail, etc. but with better organization to help you find emails easier. For the DS, we built an API that generates tags for all emails so they can be put into folders by the BE.
 
 
-1️⃣ [Tagger - Smarter Email](🚫add link to deployed app here)
+1️⃣ [Tagger - Smarter Email](https://taggerhq.com/)
 
 ### Tech Stack
 
-Languages: JSON, Python
-Libraries: Pandas, Scikit-Learn, Pickle, NLTK, and Flask
-Services: Flask and AWS EB
+ -   Languages: JSON, Python
+ -   Libraries: Pandas, Scikit-Learn, Pickle, NLTK, and Flask
+ -   Services: Flask and AWS EB
 
 ### 2️⃣ Predictions
 
