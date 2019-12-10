@@ -28,19 +28,18 @@ You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here
 
 1️⃣ [Product Canvas](https://www.notion.so/Tagger-Smarter-Email-01673a2ed9e54cb8834b959ad39f7de2)
 
-The idea of this project was to develop an email app similar to Gmail, Edison mail, Yahoo mail, etc. but with better organization to help you find emails easier. For the DS, we built an APi that generates tags for all emails so they can be put into folders by the BE.
+The idea of this project was to develop an email app similar to Gmail, Edison mail, Yahoo mail, etc. but with better organization to help you find emails easier. For the DS, we built an API that generates tags for all emails so they can be put into folders by the BE.
 
-🚫  delete if front end is not applicable to your project
 
-1️⃣ [Deployed Front End](🚫add link to deployed app here)
+1️⃣ [Tagger - Smarter Email](🚫add link to deployed app here)
 
 ### Tech Stack
 
-Languages: JSON, Python, add more later...
+Languages: JSON, Python, Pandas, Scikit-Learn, Flask, AWS EB
 
 ### 2️⃣ Predictions
 
-The DS API takes in a JSON object of an email, generates a tag, and spits out a JSON object with the previous email information + tag. The current API is using TfidfVectorizer, NLTK wordnet lemmatizer, regexp_tokenize, and a random forest classifier model.
+The DS API takes in a JSON object of an email, generates a tag, and spits out a JSON object with the previous email information + tag. The current API is using TfidfVectorizer, NLTK wordnet Lemmatizer, regexp_tokenize, and a Random Forest Classifier model.
 
 ### 2️⃣ Explanatory Variables
 
@@ -58,7 +57,7 @@ The DS API takes in a JSON object of an email, generates a tag, and spits out a 
 
 🚫  Add to or delete python notebook links as needed for your project
 
-[Python Notebook 1](🚫add link to python notebook here)
+[Functions for gathering the emails](https://github.com/Lambda-School-Labs/tagger-ds/blob/master/Jay/email_functions.ipynb)
 
 [Python Notebook 2](🚫add link to python notebook here)
 
@@ -70,7 +69,7 @@ The DS API takes in a JSON object of an email, generates a tag, and spits out a 
 
 ### 3️⃣ How to connect to the data API
 
-🚫 List directions on how to connect to the API here
+Send a POST request to http://tags2.us-east-2.elasticbeanstalk.com/api/tags with the arguments {'id', 'sender', 'subject', 'message'}
 
 ## Contributing
 
