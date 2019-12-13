@@ -9,12 +9,12 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.layers import Dropout
-
+import json
 from functions import clean_text, get_tags, format_inputs
 
-# config = tf.ConfigProto()
+# config = tensorflow.ConfigProto()
 # config.gpu_options.allow_growth = True
-# session = tf.Session(config=config,...)
+# session = tensorflow.Session(config=config,...)
 
 application = Flask(__name__)
 
@@ -43,22 +43,20 @@ def api():
     data = request.get_json()
     uid = data['id']
     sender = data['sender']
-    sender = format_inputs(sender, 100)
+    sender_format = format_inputs(sender, 100)
     subject = data['subject']
-    subject = format_inputs(subject, 150)
+    subject_format = format_inputs(subject, 150)
     message = data['message']
-    message = format_inputs(message, 5000)
-    text = [message, subject, sender]
+    message_format = format_inputs(message, 5000)
+    text = [message_format, subject_format, sender_format]
     tag = get_tags(text, loaded_model)
-    print(tag[0])
-    tag = tag[0]
     tagged_email = {'message-id': uid, 'from': sender, 'subject': subject,
                     'message': message, 'tag': tag}
     
     # print('This is error output', file=sys.stderr)
     # print('This is standard output', file=sys.stdout)
 
-    return jsonify(tagged_email)
+    return json.dumps(tagged_email)
 
 
 if __name__ == "__main__":

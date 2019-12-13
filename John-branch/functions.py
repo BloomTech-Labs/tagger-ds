@@ -29,7 +29,6 @@ def get_tags(text, model):
     labels = ['Entertainment', 'Events', 'Finance', 'Other', 'Productivity', 'Shopping', 'Social', 'Travel']
     padded = text
     pred = model.predict(padded)
-
     if (np.argmax(pred)) >= .90:
         best = np.argmax(pred)
         prediction = labels[best]
@@ -37,21 +36,9 @@ def get_tags(text, model):
     else:
         best = np.argmax(pred)
         best_pred = labels[best]
-        pred = np.where(pred == np.argmax(pred), 0, pred)
+        print(pred)
+        pred = np.where(pred == pred.max(), 0, pred)
+        print(pred)
         second = np.argmax(pred)
         second_pred = labels[second]
-        return best_pred, second_pred
-
-def getTags(preds_proba, encoder):
-    classes = encoder.classes_
-    if preds_proba.max() >= .75:
-        best = np.where(preds_proba == preds_proba.max())
-        prediction = classes[best]
-        return [prediction[0]]
-    else:
-        best = np.where(preds_proba == preds_proba.max())
-        best_pred = classes[best]
-        preds_proba = np.where(preds_proba==preds_proba.max(), 0, preds_proba)
-        second = np.where(preds_proba== preds_proba.max())
-        second_pred = classes[second]
-        return [best_pred[0], second_pred[0]]
+        return [best_pred, second_pred]
