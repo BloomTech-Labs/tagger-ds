@@ -21,10 +21,10 @@ def clean_text(text):
     return text
 
 class tokenize:
-    def regnltk_tokenize(self, text):
+    def regnltk_tokenize(text):
         lemmatizer = WordNetLemmatizer()
-        text = clean_text(text)
-        words = regexp_tokenize(text, pattern = '\s+', gaps = True)
+        text_clean = clean_text(text)
+        words = regexp_tokenize(text_clean, pattern = '\s+', gaps = True)
         return [lemmatizer.lemmatize(word) for word in words if (len(word) >= 3)]
 
 

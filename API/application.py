@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from joblib import load
 from nltk.tokenize.regexp import regexp_tokenize
-from main import clean_text, tokenize, getTags
+from main import  clean_text, tokenize, getTags
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.stem import WordNetLemmatizer
 import nltk
@@ -38,23 +38,6 @@ def tag_email(text):
 def home():
     return 'You made it'
 
-@application.route('/personal', methods=['POST'])
-def personal():
-    data = request.get_json()
-    uid = data['id']
-    sender = data['sender']
-    subject = data['subject']
-    message = data['message']
-    text = sender + ' ' + subject + ' ' + message
-    text_clean = clean_text(text)
-    text_vect = personal_vect.transform([text_clean])
-    predict = personal_model.predict(text_vect)
-    print(predict[0])
-    email = {'message-id': uid, 'from': sender, 'subject': subject,
-             'message': message, 'personal': predict.tolist()}
-    
-    return jsonify(email)
-
 @application.route('/api/tags', methods=['POST'])
 def api():
     data = request.get_json()
@@ -64,8 +47,11 @@ def api():
     message = data['message']
     text = sender + ' ' + subject + ' ' + message
     tag = tag_email(text)
+    text_clean = clean_text(text)
+    text_vect = personal_vect.transform([text_clean])
+    predict = personal_model.predict(text_vect)
     tagged_email = {'message-id': uid, 'from': sender, 'subject': subject,
-                    'message': message, 'tag': tag}
+                    'message': message, 'tag': tag, 'personal': predict.tolist()}
     
     return jsonify(tagged_email)
 
