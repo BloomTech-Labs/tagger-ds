@@ -1,7 +1,8 @@
 import pickle
+import numpy as np
 import tensorflow as tf
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-import numpy as np
+
 
 with open('final_tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
@@ -10,7 +11,6 @@ def clean_text(text):
     # Perform a few cleaning steps to remove non-alphabetic characters
     
     text = text.replace("\n", " ").replace("\r", " ")
-
     text = text.strip(" ")
     
     punc_list = '!@#$%^&*()+?-_=:.<>[]{}/\~",©' + '1234567890'
@@ -33,7 +33,7 @@ def get_tags(text, loaded_model):
     if (np.argmax(pred)) >= .90:
         best = np.argmax(pred)
         prediction = labels[best]
-        return prediction
+        return [prediction]
     else:
         best = np.argmax(pred)
         best_pred = labels[best]
