@@ -103,5 +103,9 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# Data folder
+# Private info
+Jay/Data/
 Email_data/
+
+# Too Big To Push
+API/*.joblib
