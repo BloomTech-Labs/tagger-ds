@@ -59,13 +59,17 @@ class IMap():
         
         for i in i_d:
             try:
-                typ, data = self.mail.fetch(str(i).encode(), '(UID RFC822)')
+                typ, data = self.mail.fetch(str(i), '(RFC822)')
 
-                uid = email.message_from_bytes(data[0][0])
+                #print(data[0][1])
+
+                print("Test 1")
+                uid = email.message_from_string(data[0][0].decode('utf-8'))
                 uid = uid.get_payload()
                 uid = uid.split()[-3]
 
-                meta = email.message_from_bytes(data[0][1])
+                #print("Test 2")
+                meta = email.message_from_string(data[0][1].decode('utf-8'))
                 from_ = meta['From']
                 subject = meta['Subject']
                 content_type = meta['Content-Type'].split(';')[0]
@@ -89,8 +93,6 @@ class IMap():
             except Exception as e:
                 print(e)
 
-# mail = IMap("", "")
-# m,i = mail.search_mailbox()
-# mail.save_mail(i)
-            
-    
+mail = IMap("taggerhq@gmail.com", "iknowwhatthispasswordis")
+m,i = mail.search_mailbox()
+mail.save_mail(i)
