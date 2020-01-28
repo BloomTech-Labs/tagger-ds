@@ -2,7 +2,7 @@
 
 You can find the project at [TaggerHQ](https://taggerhq.com/).
 
-## Contributors
+## Labs 18 Contributors 
 |[Avraham Jacobsohn](https://github.com/noreallyimfine)  |  
 [John Morrison](https://github.com/JohnMorrisonn)  |  
 [Samuel Hepner](https://github.com/SamH3pn3r)        |   
