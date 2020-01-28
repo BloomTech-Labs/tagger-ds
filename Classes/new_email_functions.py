@@ -4,6 +4,7 @@ import csv
 import quopri
 from bs4 import BeautifulSoup
 import re
+from decouple import config
 
 class IMap():
     def __init__(self, address=None, password=None):
@@ -138,8 +139,8 @@ class IMap():
             except Exception as e:
                 print(e)
 
-# mail = IMap("", "")
-# m,i = mail.search_mailbox()
-# mail.save_mail(i)
+mail = IMap(config("EMAIL"), config("EMAIL_PASSWORD"))
+m,i = mail.search_mailbox()
+mail.save_mail(i)
             
     
