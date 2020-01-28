@@ -8,7 +8,7 @@ You can find the project at [TaggerHQ](https://taggerhq.com/).
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
 |                 [<img src="https://avatars3.githubusercontent.com/u/14889913?s=460&v=4" width = "200" />](https://github.com/apathyhill)                       |                      [<img src="https://avatars3.githubusercontent.com/u/12549527?s=460&v=4" width = "200" />](https://github.com/JeanFraga)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width = "200" />](https://github.com/JeanFraga)                       |       
 |[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/apathyhill)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/JeanFraga)             
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/avraham-jacobsohn-b88b4526/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/johnjmorrison/) |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/apathyhill) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeanfraga) |
 
 ## Labs 18 Contributors 
 |[Avraham Jacobsohn](https://github.com/noreallyimfine)  |  
