@@ -40,16 +40,17 @@ class IMap():
         
         return self.mail, mail_ids
 
-    def clean_text(self, text):
-        text = text.decode("utf-8", errors="ignore")
-        html = BeautifulSoup(text, "html.parser")
+    def clean_text(self, from_, msg):
+        from_ = re.sub(r"<(.*?)>", "", from_).strip().replace('"', "")
+        msg = quopri.decodestring(msg).decode("utf-8", errors="ignore")
+        html = BeautifulSoup(msg, "html.parser")
         removals = html.find_all("style")
         for match in removals:
             match.decompose()
 
-        text = re.sub(r"\\n|\\r", "", text)
-        text = " ".join(re.findall(r"\b\w+\b", text))
-        return text
+        msg = re.sub(r"\\n|\\r", "", msg)
+        msg = " ".join(re.findall(r"\b\w+\b", msg))
+        return (from_, msg)
 
     def save_mail(self, i_d, filename='email_data.csv', verbose=False):
         csv_file = open(filename, 'w', encoding='utf-8')
@@ -58,13 +59,17 @@ class IMap():
         
         for i in i_d:
             try:
-                typ, data = self.mail.fetch(str(i).encode(), '(UID RFC822)')
+                typ, data = self.mail.fetch(str(i), '(RFC822)')
 
-                uid = email.message_from_bytes(data[0][0])
+                #print(data[0][1])
+
+                print("Test 1")
+                uid = email.message_from_string(data[0][0].decode('utf-8'))
                 uid = uid.get_payload()
                 uid = uid.split()[-3]
 
-                meta = email.message_from_bytes(data[0][1])
+                #print("Test 2")
+                meta = email.message_from_string(data[0][1].decode('utf-8'))
                 from_ = meta['From']
                 subject = meta['Subject']
                 content_type = meta['Content-Type'].split(';')[0]
@@ -80,10 +85,14 @@ class IMap():
                     print('Subject: ', subject)
                     print('Content-Type: ', content_type)
                     print('Message: ', quopri.decodestring(msg))
-                csv_writer.writerow([i, uid, from_, subject, self.clean_text(quopri.decodestring(msg)), content_type])
+
+                from_, msg = self.clean_text(from_, msg)
+                
+                csv_writer.writerow([i, uid, from_, subject, msg, content_type])
                 print('Message saved')
             except Exception as e:
                 print(e)
 
-
-    
+mail = IMap("taggerhq@gmail.com", "iknowwhatthispasswordis")
+m,i = mail.search_mailbox()
+mail.save_mail(i)
