@@ -12,6 +12,18 @@ class IMap():
         self.login(self.address, self.password)
 
     def login(self, address=None, password=None):
+        '''
+        Wrapper for logging into to email through IMAP
+    
+        ARGS: 
+        address - str (defaul: None, prompt input). Email address 
+        being connected to.
+        
+        password - str (default: None, prompt input). Password for email address.
+        
+        Returns:
+        Mail object connected to corresponding server for email address
+        '''
         if not address:
             raise Exception("Missing email address.")
         if not password:
@@ -31,6 +43,20 @@ class IMap():
         print("Logged in as {}!".format(address))
 
     def search_mailbox(self, inbox="inbox"):
+        """
+        Connects to mailbox and collects a list of ids from mailbox
+    
+        ARGS:
+        mail - logged in mail object
+        
+        inbox - str (defauls: 'inbox'). Mailbox to connect to. Must be valid
+        imap mailbox.
+        
+        Returns:
+        tup (mail object, list of mail_ids)
+        If you don't need the ids, you can use an underscore like so:
+        mail, _ = search_mailbox(mail)
+        """
         self.mail.select(inbox)
         
         typ, data = self.mail.search(None, "ALL")
@@ -41,6 +67,15 @@ class IMap():
         return self.mail, mail_ids
 
     def clean_text(self, from_, msg):
+        """
+        Cleans emails from csv (assumes columns of save_mail func)
+        
+        ARGS: pandas dataframe
+        dataframe from csv with columns of save_mail()
+        
+        Returns:
+        Dataframe with emails cleaned up
+        """
         from_ = re.sub(r"<(.*?)>", "", from_).strip().replace('"', "")
         msg = quopri.decodestring(msg).decode("utf-8", errors="ignore")
         html = BeautifulSoup(msg, "html.parser")
@@ -53,6 +88,20 @@ class IMap():
         return (from_, msg)
 
     def save_mail(self, i_d, filename='email_data.csv', verbose=False):
+        """
+        Writes email data to csv
+        
+        ARGS: 
+        mail - logged in mail object
+        
+        i_d - list of i_ds
+        ids of messages to get
+        
+        filename - string ending in .csv (default: 'email_data.csv')
+        name of file to write to 
+        
+        Returns: None, saves data to csv
+        """
         csv_file = open(filename, 'w', encoding='utf-8')
         csv_writer = csv.writer(csv_file)
         csv_writer.writerow(['id', 'uid', 'from_', 'subject', 'msg', 'content_type'])
