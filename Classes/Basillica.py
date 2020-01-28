@@ -1,16 +1,11 @@
-from decouple import config
-import basilica
 
 class Basilica_api():
 
-    """
-    Use API_KEY='SLOW_DEMO_KEY' if you do not have a basilica API_KEY
-    """
-
+    import basilica
 
     columns = ['from_','subject', 'msg','content_type']
 
-    def __init__(self, df, API_KEY=config("BASILICA_KEY"), columns=columns):
+    def __init__(self, df, API_KEY='SLOW_DEMO_KEY', columns=columns):
         self.df = df
         self.API_KEY = API_KEY
         self.columns = columns
