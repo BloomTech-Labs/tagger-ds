@@ -5,6 +5,6 @@ curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compos
 chmod +x /usr/local/bin/docker-compose
 
 git clone --single-branch --branch master https://github.com/Lambda-School-Labs/tagger-ds.git
-cd tagger-ds
+cd tagger-ds/flask_test
 
 sudo docker-compose up --build
