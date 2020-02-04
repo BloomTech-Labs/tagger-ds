@@ -32,10 +32,10 @@ RUN conda init bash && \
 RUN conda install -q -y libiconv PyYAML
 RUN python3 -m pip install --no-binary :all: psycopg2 && \
     python3 -m pip install pyuwsgi Flask==1.1.1 Flask_SQLAlchemy==2.4.1 \
-    scikit-learn = "*" beautifulsoup4==4.8.1 \
-    numpy==1.17.4 python_decouple==3.3 click = "*"\
+    scikit-learn beautifulsoup4==4.8.1 \
+    numpy==1.17.4 python_decouple==3.3 click\
     python_dotenv==0.10.3 requests==2.22.0 psycopg2-binary==2.8.4 \
-    lxml==4.4.2 pandas==0.25.3 basilica = "*"
+    lxml==4.4.2 pandas==0.25.3 basilica
 
 COPY . /home/ubuntu/
 
