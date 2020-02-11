@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+    flask:
+        build: ./flask
+        container_name: flask
+        restart: always
+        env_file:
+            - ./.env.prod
+        expose:
+            - 8080
+        volumes:
+            - web-data:/home/ubuntu/app/
+    nginx:
+        build: ./nginx
+        container_name: nginx
+        restart: always
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - web-data:/home/ubuntu/app/
+
+    data:
+        image: postgres:latest
+        volumes:
+        - db-data:/var/lib/postgresql/data
+        command: "true"
+
+    postgres:
+        restart: always
+        image: postgres:latest
+        container_name: postgres
+        volumes:
+        - db-data:/var/lib/postgresql/data
+        ports:
+        - "5432:5432"
+
+volumes:
+    db-data:
+    web-data:
