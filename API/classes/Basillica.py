@@ -1,5 +1,6 @@
 from decouple import config
 import basilica
+import pandas as pd
 
 class BasilicaAPI():
 
@@ -10,8 +11,7 @@ class BasilicaAPI():
 
     columns = ['from_','subject', 'msg','content_type']
 
-    def __init__(self, df, API_KEY=config("BASILICA_KEY"), columns=columns):
-        self.df = df
+    def __init__(self, API_KEY=config("BASILICA_KEY"), columns=columns):
         self.API_KEY = API_KEY
         self.columns = columns
 
