@@ -36,11 +36,12 @@ class BasilicaAPI():
         from timeit import default_timer as timer
         start = timer()
         column_embedded = []
-        for column in self.df['joined_columns']:
-            sentence = column
+        for n in range(0, len(self.df['joined_columns']), 64):
+            sentences = self.df['joined_columns'].iloc[n:n+64]
             with basilica.Connection(self.API_KEY) as c:
-                embedding = list(c.embed_sentence(sentence, model='email', version='default', opts={}, timeout=5))
-            column_embedded.append(embedding)
+                embeddings = c.embed_sentences(sentences, model='email', version='default', opts={}, timeout=5)
+                for e in embeddings:
+                    column_embedded.append(e)
         self.df['embedded'] = column_embedded
         end = timer()
         print(end - start)

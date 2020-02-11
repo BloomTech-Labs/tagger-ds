@@ -1,6 +1,5 @@
 # Imports
-from classes.new_email_functions import IMap
-from classes.Basillica import BasilicaAPI
+from classes.basilica_functions import BasilicaAPI
 from flask import Flask, request, jsonify
 import json
 import pandas as pd
@@ -32,8 +31,12 @@ def train_model():
     knn.fit(X, y)
 
     pkl = pickle.dumps(knn) # Save model Pickle into the Database
-    db_user = User(email_address=j["address"], pickle_file=pkl)
-    DB.session.add(db_user)
+    db_user = User.query.filter(User.email_address == j["address"]).one()
+    if db_user: # Check if user already exists
+        db_user.pickle_file = pkl
+    else:
+        db_user = User(email_address=j["address"], pickle_file=pkl) # Create user if new
+        DB.session.add(db_user)
     DB.session.commit()
     return "Trained a model!"
 
