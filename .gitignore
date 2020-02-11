@@ -112,5 +112,6 @@ Email_data/
 
 # Too Big To Push
 API/*.joblib
+
 email_data.csv
 test.py
