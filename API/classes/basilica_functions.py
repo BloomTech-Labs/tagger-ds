@@ -39,7 +39,7 @@ class BasilicaAPI():
         for n in range(0, len(self.df['joined_columns']), 64):
             sentences = self.df['joined_columns'].iloc[n:n+64]
             with basilica.Connection(self.API_KEY) as c:
-                embeddings = c.embed_sentences(sentences, model='email', version='default', opts={}, timeout=5)
+                embeddings = c.embed_sentences(sentences, model='email', version='default', opts={}, timeout=20)
                 for e in embeddings:
                     column_embedded.append(e)
         self.df['embedded'] = column_embedded
