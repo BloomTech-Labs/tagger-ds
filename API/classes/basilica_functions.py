@@ -9,7 +9,7 @@ class BasilicaAPI():
     """
 
 
-    columns = ['from_','subject', 'msg','content_type']
+    columns = ['from','subject', 'msg','content_type']
 
     def __init__(self, API_KEY=config("BASILICA_KEY"), columns=columns):
         self.API_KEY = API_KEY
