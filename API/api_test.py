@@ -43,7 +43,7 @@ def train_model():
     pkl = file_obj.getvalue()
 
     # Check if user already exists
-    db_user = DB.session.query(exists().where(User.email_address == j["address"])).scalar()
+    db_user = User.query.filter(User.email_address == j["address"]).scalar()
     if db_user: 
         # Update pickle if user exists
         db_user.pickle_file = pkl
@@ -56,14 +56,14 @@ def train_model():
     return "Trained a model!"
 
 
-@app.route("/predict", methods=["GET"])
+@app.route("/predict", methods=["POST"])
 def predict():
     # Get JSON and convert to DataFrame
     j = json.loads(request.data)
     df = pd.DataFrame(data=j["emails"])
 
     # Check if user already exists
-    db_user = DB.session.query(exists().where(User.email_address == j["address"])).scalar()
+    db_user = User.query.filter(User.email_address == j["address"]).scalar()
     if db_user: 
         # Load pickle and get predictions
         basilica_client.df = df
