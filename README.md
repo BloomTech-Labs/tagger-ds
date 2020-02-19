@@ -112,3 +112,53 @@ See [Backend Documentation](https://github.com/Lambda-School-Labs/tagger-be) for
 
 See [Front End Documentation](https://github.com/Lambda-School-Labs/tagger-fe) for details on the front end of our project.
 
+## Accessing the API Endpoints
+
+### /train_model
+Input:
+```
+{   
+    "address": <email user>,
+    "emails": [
+        {
+            "uid": <id>,
+            "from": <email sender>,
+            "subject": <email subject>,
+            "msg": <email body text>
+            "content_type": <unused, keep as blank string>
+        },
+        ...
+    ]
+}
+
+```
+Output:
+```
+"Trained a model!"
+```
+
+### /predict
+Input:
+```
+{   
+    "address": <email user>,
+    "emails": [
+        {
+            "uid": <email uid (optional)>,
+            "from": <email sender>,
+            "subject": <email subject>,
+            "msg": <email body text>
+            "content_type": <unused, keep as blank string>
+        } 
+    ]
+}
+```
+- "emails" array can have a length > 0, but only the first entry will be taken.
+- This endpoint can also be used for predicting what real emails are closest to a hypothetical email.
+
+Output:
+```
+Array of 5 email UID's closest in content to the selected email 
+or "No model in database for this address..."
+```
+
