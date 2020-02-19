@@ -12,6 +12,14 @@ echo "This line installs docker-compose with sudo"
 curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
+echo "enabling docker"
+sudo systemctl start docker
+sudo systemctl enable docker
+
+echo "adding docker to group to remove need of using sudo before any docker command"
+sudo groupadd docker
+sudo gpasswd -a ubuntu docker
+
 echo "This line clones the repo that contains the docker compose and flask"
 git clone --single-branch --branch JFDeployedbranch https://github.com/Lambda-School-Labs/tagger-ds.git
 cd tagger-ds
