@@ -188,7 +188,7 @@ or "No model in database for this address..."
 2. ```sudo sh bootstrap.sh``` will run the shell commands and return an error once it gets to the last line.
     - The error is due to the lack of a ".env" file. Look at "exampleenv" for reference on what the ".env" should look like.
 3. ```cd tagger-ds/``` to go change into the directory we cloned with the shell file, that contains "docker-compose.yml
-4. ```sudo vim .env``` to open a command line editor(change `vim` for `nano` for a different command line editor)
+4. ```sudo vim .env``` to open a command line editor(replace `vim` for `nano` for a different command line editor)
     - copy the contents of "https://raw.githubusercontent.com/Lambda-School-Labs/tagger-ds/JFDeployedbranch/exampleenv" into this file.
     - Once inside vim type the letter "a" to transition into `--insert--` mode then press the "esc" key once finished editing.
     - change "BASILICA_KEY=SLOW_DEMO_KEY" for "BASILICA_KEY=[personalkey]"
