@@ -1,5 +1,7 @@
 # Tagger - Smarter Email
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/7852140c93ca358df216/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/airbnb-unit-price-analysis-ds/maintainability)
+
 You can find the project at [TaggerHQ](https://taggerhq.com/).
 
 ## Labs 20 Contributors 
