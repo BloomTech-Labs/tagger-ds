@@ -1,0 +1,5 @@
+BASILICA_KEY=SLOW_DEMO_KEY
+DATABASE_URL=postgres://test:testp@postgres:5432/testu
+POSTGRES_USER=test
+POSTGRES_PASSWORD=testp
+POSTGRES_DB=testu
