@@ -21,7 +21,7 @@ sudo groupadd docker
 sudo gpasswd -a ubuntu docker
 
 echo "This line clones the repo that contains the docker compose and flask"
-git clone --single-branch --branch JFDeployedbranch https://github.com/Lambda-School-Labs/tagger-ds.git
+git clone --single-branch --branch master https://github.com/Lambda-School-Labs/tagger-ds.git
 cd tagger-ds
 
 echo "this line will return an error if you run without .env but I left it here for show and tell"
