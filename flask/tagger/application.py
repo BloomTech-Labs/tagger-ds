@@ -71,7 +71,7 @@ def create_app():
     #     DB.create_all()
     #     return "reset database"
 
-    @app.route("/stream_test", methods=["POST"])
+    @APP.route("/stream_test", methods=["POST"])
     def stream_test():
         chunk_size = 4096
         data = ""
