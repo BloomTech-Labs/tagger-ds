@@ -89,7 +89,16 @@ def create_app():
     @APP.route('/train_model', methods=["POST"])
     def train_model():
         # Get JSON and convert to DataFrame
-        j = json.loads(request.data)
+        data = b""
+        while True:
+            chunk = request.stream.read(4096)
+            if len(chunk) == 0:
+                break
+            data += chunk
+        try:
+            j = json.loads(data.decode("utf-8"))
+        except Exception as e:
+            return "Could not process incoming stream of emails."
         df = pd.DataFrame(data=j["emails"])
 
         # Embed emails
