@@ -114,7 +114,7 @@ def create_app():
             chunk = request.stream.read(chunk_size)
             if len(chunk) == 0:
                 break
-            data += chunk
+            data += str(chunk)
         try:
             j = json.loads(data)
             return "Handled a stream!"
