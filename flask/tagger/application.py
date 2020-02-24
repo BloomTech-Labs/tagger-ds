@@ -105,8 +105,21 @@ def create_app():
         DB.session.commit()
         file_obj.close()
         return "Trained a model!"
-        # celery_train.delay(df)
-        # return "Emails have been received and will finish training shortly"
+
+    @APP.route("/stream_test", methods=["POST"])
+    def stream_test():
+        chunk_size = 4096
+        data = ""
+        while True:
+            chunk = request.stream.read(chunk_size)
+            if len(chunk) == 0:
+                break
+            data += chunk
+        try:
+            j = json.loads(data)
+            return "Handled a stream!"
+        except Exception as e:
+            return e
 
     @APP.route("/predict", methods=["POST"])
     def predict():
