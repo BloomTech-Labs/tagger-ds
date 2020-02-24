@@ -55,6 +55,20 @@ def train_model():
     file_obj.close()
     return "Trained a model!"
 
+@app.route("/stream_test", methods=["POST"])
+def stream_test():
+    chunk_size = 4096
+    data = ""
+    while True:
+        chunk = request.stream.read(chunk_size)
+        if len(chunk) == 0:
+            break
+        data += chunk
+    try:
+        j = json.loads(data)
+        return "Handled a stream!"
+    except Exception as e:
+        return e
 
 @app.route("/predict", methods=["POST"])
 def predict():
