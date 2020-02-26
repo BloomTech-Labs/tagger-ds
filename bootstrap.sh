@@ -26,3 +26,6 @@ cd tagger-ds
 
 echo "this line will return an error if you run without .env but I left it here for show and tell"
 sudo docker-compose up --build
+
+echo "start database and create tables"
+sudo docker-compose exec flask tagger db reset
