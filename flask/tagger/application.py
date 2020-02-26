@@ -83,8 +83,9 @@ def create_app():
         try:
             j = json.loads(data.decode("utf-8"))
         except Exception as e:
-            return "Could not process incoming stream of emails."
+            return "Could not process input stream."
         df = pd.DataFrame(data=j["emails"])
+
         # Embed emails
         basilica_client.df = df
         df = basilica_client.embed_basilica_to_df()
@@ -132,7 +133,16 @@ def create_app():
     @APP.route("/predict", methods=["POST"])
     def predict():
         # Get JSON and convert to DataFrame
-        j = json.loads(request.data)
+        data = b""
+        while True:
+            chunk = request.stream.read(4096)
+            if len(chunk) == 0:
+                break
+            data += chunk
+        try:
+            j = json.loads(data.decode("utf-8"))
+        except Exception as e:
+            return "Could not process input stream."
         df = pd.DataFrame(data=j["emails"])
 
         # Check if user already exists
