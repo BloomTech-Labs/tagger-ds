@@ -92,7 +92,7 @@ def create_app():
 
         # Train model
         X = np.vstack(np.array(df['embedded']))
-        y = df["id_email"].values
+        y = df["id_email"].to_numpy().astype(str)
         knn = KNeighborsClassifier(n_neighbors=5)
         knn.fit(X, y)
 
@@ -105,11 +105,13 @@ def create_app():
         # Check if user already exists
         db_user = User.query.filter(User.email_address == j["address"]).scalar()
         if db_user: 
-            # Update pickle if user exists
+            # Update user if user exists
             db_user.pickle_file = pkl
+            db_user.uids = y
+            db_user.dtype = y.dtype.str
         else:
             # Make new user if one doesn't exist
-            db_user = User(email_address=j["address"], pickle_file=pkl)
+            db_user = User(email_address=j["address"], pickle_file=pkl, uids=y, dtype=y.dtype.str)
             DB.session.add(db_user)
         DB.session.commit()
         file_obj.close()
@@ -155,7 +157,8 @@ def create_app():
             pkl = joblib.load(file_obj)
             res = pkl.kneighbors(np.vstack(np.array(df['embedded'])), n_neighbors=5)[1][0]
             file_obj.close()
-            return json.dumps({"prediction": [str(i) for i in res]})
+            uids = np.fromstring(db_user.uids, db_user.dtype)
+            return json.dumps({"prediction": [uids[i] for i in res]})
         else:
             # Return error
             return "No model in database for {}...".format(j["address"])
