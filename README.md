@@ -1,13 +1,18 @@
 # Tagger - Smarter Email
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/7852140c93ca358df216/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/airbnb-unit-price-analysis-ds/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage) ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
+![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)
+![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
 
 You can find the project at `TBD`.
 
 ## Labs 24 Contributors
-|[Brandon Mulas](https://github.com/bmulas1535)|[Chris Filkins](https://github.com/chrisf)|[Jack Lindberg](https://github.com/jacklindberg)|[Monica Bustamante](https://github.com/lilianabustamonte)|
-|:---:|:---:|:---:|:---:|
-|[picture1]()|[picture2]()|[picture3]()|[picture4]()|
+|[Brandon Mulas](https://github.com/bmulas1535)|[Monica Bustamante](https://github.com/Moly-malibu)|
+|:---:|:---:|
+|[<img src="https://avatars3.githubusercontent.com/u/54636579?s=460&u=d00932d4a8f2179dd262f9e934d125adda505d2c&v=4" width="200">](https://github.com/bmulas1535)|[<img src="https://avatars0.githubusercontent.com/u/58006376?s=460&u=8382c603014ddf685cf7886ecc1f62e6429b9626&v=4" width="200">](https://github.com/Moly-malibu)|
+|[Chris Filkins](https://github.com/filchyboy)|[Jack Lindberg](https://github.com/Jllin50)|
+[<img src="https://avatars3.githubusercontent.com/u/55597792?s=460&u=6b0d46f250e1e450c25cc32d692601d591f2b267&v=4" width="200">]()|[picture3]()|
 
 ## Labs 20 Contributors 
 |[Rosie Lasota](https://github.com/apathyhill)|[Jean Fraga](https://github.com/JeanFraga)|  
@@ -19,10 +24,7 @@ You can find the project at `TBD`.
 |:---:|:---:|:---:|
 |[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJJJCQN4R-3d9845ab1b54-512" width="200" />](https://github.com/noreallyimfine)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UL5V3G7A9-f4a14f4623d7-512" width="200" />](https://github.com/JohnMorrisonn)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width="200" />](https://github.com/SamH3pn3r)|
 
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)
-![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
+
 
 🚫 more info on using badges [here](https://github.com/badges/shields)
 
