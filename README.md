@@ -1,6 +1,6 @@
 # Tagger - Smarter Email
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage) ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/04429dcdec013a7b9175/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/tagger-ds/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/04429dcdec013a7b9175/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/tagger-ds/test_coverage) ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
 ![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)
 ![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
@@ -12,7 +12,7 @@ You can find the project at `TBD`.
 |:---:|:---:|
 |[<img src="https://avatars3.githubusercontent.com/u/54636579?s=460&u=d00932d4a8f2179dd262f9e934d125adda505d2c&v=4" width="200">](https://github.com/bmulas1535)|[<img src="https://avatars0.githubusercontent.com/u/58006376?s=460&u=8382c603014ddf685cf7886ecc1f62e6429b9626&v=4" width="200">](https://github.com/Moly-malibu)|
 |[Chris Filkins](https://github.com/filchyboy)|[Jack Lindberg](https://github.com/Jllin50)|
-[<img src="https://avatars3.githubusercontent.com/u/55597792?s=460&u=6b0d46f250e1e450c25cc32d692601d591f2b267&v=4" width="200">]()|[picture3]()|
+[<img src="https://avatars3.githubusercontent.com/u/55597792?s=460&u=6b0d46f250e1e450c25cc32d692601d591f2b267&v=4" width="200">]()|[<img src="https://avatars1.githubusercontent.com/u/31583768?s=460&u=5d5f73d4382a2d9e54b78b97fa0b71e3621510fc&v=4" width="200">](https://github.com/Jllin50)|
 
 ## Labs 20 Contributors 
 |[Rosie Lasota](https://github.com/apathyhill)|[Jean Fraga](https://github.com/JeanFraga)|  
