@@ -2,31 +2,27 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/7852140c93ca358df216/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/airbnb-unit-price-analysis-ds/maintainability)
 
-You can find the project at [TaggerHQ](https://taggerhq.com/).
+You can find the project at `TBD`.
+
+## Labs 24 Contributors
+|[Brandon Mulas](https://github.com/bmulas1535)|[Chris Filkins](https://github.com/chrisf)|[Jack Lindberg](https://github.com/jacklindberg)|[Monica Bustamante](https://github.com/lilianabustamonte)|
+|:---:|:---:|:---:|:---:|
+|[picture1]()|[picture2]()|[picture3]()|[picture4]()|
 
 ## Labs 20 Contributors 
-|[Rosie Lasota](https://github.com/apathyhill)  |  
-[Jean Fraga](https://github.com/JeanFraga)  |  
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                 [<img src="https://avatars3.githubusercontent.com/u/14889913?s=460&v=4" width = "200" />](https://github.com/apathyhill)                       |                      [<img src="https://avatars3.githubusercontent.com/u/12549527?s=460&v=4" width = "200" />](https://github.com/JeanFraga)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width = "200" />](https://github.com/JeanFraga)                       |       
-|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/apathyhill)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/JeanFraga)             
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/apathyhill) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeanfraga) |
+|[Rosie Lasota](https://github.com/apathyhill)|[Jean Fraga](https://github.com/JeanFraga)|  
+|:---:|:---:|
+|[<img src="https://avatars3.githubusercontent.com/u/14889913?s=460&v=4" width="200" />](https://github.com/apathyhill)|[<img src="https://avatars3.githubusercontent.com/u/12549527?s=460&v=4" width="200" />](https://github.com/JeanFraga)|
 
 ## Labs 18 Contributors 
-|[Avraham Jacobsohn](https://github.com/noreallyimfine)  |  
-[John Morrison](https://github.com/JohnMorrisonn)  |  
-[Samuel Hepner](https://github.com/SamH3pn3r)        |   
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | 
-|                 [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJJJCQN4R-3d9845ab1b54-512" width = "200" />](https://github.com/noreallyimfine)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UL5V3G7A9-f4a14f4623d7-512" width = "200" />](https://github.com/JohnMorrisonn)                       |                      [<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width = "200" />](https://github.com/SamH3pn3r)                       |       
-|[<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/noreallyimfine)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/JohnMorrisonn)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/SamH3pn3r)                  |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/avraham-jacobsohn-b88b4526/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/johnjmorrison/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/samuel-hepner-7451b7133/) |
-
-
+|[Avraham Jacobsohn](https://github.com/noreallyimfine)|[John Morrison](https://github.com/JohnMorrisonn)|[Samuel Hepner](https://github.com/SamH3pn3r)|
+|:---:|:---:|:---:|
+|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJJJCQN4R-3d9845ab1b54-512" width="200" />](https://github.com/noreallyimfine)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UL5V3G7A9-f4a14f4623d7-512" width="200" />](https://github.com/JohnMorrisonn)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width="200" />](https://github.com/SamH3pn3r)|
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)
+![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
 
 🚫 more info on using badges [here](https://github.com/badges/shields)
 
@@ -37,7 +33,6 @@ You can find the project at [TaggerHQ](https://taggerhq.com/).
 [Product Canvas](https://www.notion.so/Tagger-Smarter-Email-01673a2ed9e54cb8834b959ad39f7de2)
 
 The idea of this project was to develop an email app similar to Gmail, Edison mail, Yahoo mail, etc. but with better organization to help you find emails easier. For the DS, we built an API that generates tags for all emails so they can be put into folders by the BE.
-
 
 [Tagger - Smarter Email](https://taggerhq.com/)
 
