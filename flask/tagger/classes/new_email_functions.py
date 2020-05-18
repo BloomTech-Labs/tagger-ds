@@ -142,5 +142,3 @@ class IMap():
 # mail = IMap(config("EMAIL"), config("EMAIL_PASSWORD"))
 # m,i = mail.search_mailbox()
 # mail.save_mail(i)
-            
-    
