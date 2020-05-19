@@ -1,8 +1,7 @@
 from flask import current_app as app
-from flask import request, jsonify
+from flask import request, make_response, jsonify
 
 @app.route('/')
 def index():
-    response = {'response_code':200,
-                'response_body':'This is the index page.'}
-    return jsonify(response)
+    pass
+    
