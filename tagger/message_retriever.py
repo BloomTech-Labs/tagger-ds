@@ -1,0 +1,84 @@
+# Email Retrieving Gateway
+#
+# TODO OOP
+#
+# Current build is proof of concept for retrieving email from gmail account.
+# Retrieves 1 email at a time. Next iteration will retrieve all emails since
+# last known retrieved pulldown.
+
+# Module imports / focused on Google API
+from __future__ import print_function
+import pickle
+import os.path
+import base64
+from bs4 import BeautifulSoup
+import bleach
+import re
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+
+
+# If modifying these scopes, delete the file token.pickle.
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+
+
+def main():
+    creds = None
+    # The file token.pickle stores the user's access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    # In production this authorization method will be handled through a JSON
+    # retrieved from the BE server.
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                'credentials.json', SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
+    # Build the Google Service
+    service = build('gmail', 'v1', credentials=creds)
+
+    # Call the Gmail API
+    message = service.users().messages().list(userId='me').execute()
+
+    # Find most recent message
+    recent_msg_id = message['messages'][0]['id']
+    
+    # Recent message list/this will be important when tracking 
+    # which emails have been retrieved versus those that haven't.
+    recent_msg_list = message['messages']
+
+    # Call message content
+    message_content = service.users().messages().get(
+        userId='me', id=recent_msg_id).execute()
+
+    # Call message body
+    message_body = message_content['payload']['parts']
+    message_body_dict = dict(message_body[0])
+
+    # Decode base64 encoding
+    decode = message_body_dict['body']['data']
+    decodedContents = base64.urlsafe_b64decode(decode.encode('ASCII'))
+
+    # Clean the text
+    text = BeautifulSoup(decodedContents, 'html.parser')
+    text = str(text.text)
+    text = re.sub(r"http\S+", "", text)
+
+    # Output
+    print("Recent Message: ", recent_msg_id, "\n\nRecent Message List: ",
+          recent_msg_list, "\n\nMessage Body: ", text)
+
+
+
+if __name__ == '__main__':
+    main()
