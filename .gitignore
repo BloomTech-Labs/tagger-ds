@@ -107,8 +107,8 @@ venv.bak/
 .mypy_cache/
 
 # Private info
-Jay/Data/
-Email_data/
+credentials.json
+token.pickle
 
 # Too Big To Push
 API/*.joblib
