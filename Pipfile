@@ -9,7 +9,7 @@ verify_ssl = true
 flask = "*"
 requests = "*"
 python-dotenv = "*"
-flask-markdown = "*"
+markdown = "*"
 
 [requires]
 python_version = "3.7"
