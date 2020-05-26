@@ -1,5 +1,5 @@
 from flask import current_app as app
-from flask import request, redirect, render_template, url_for
+from flask import request, redirect, render_template, url_for, Response
 from markdown import markdown as markd
 import markdown.extensions.fenced_code
 import markdown.extensions.codehilite
