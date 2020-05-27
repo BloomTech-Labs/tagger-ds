@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 import json
 import re
 import pandas as pd
-from collections import Counter
 from googleapiclient.discovery import build
 from gensim.corpora import Dictionary
 from gensim.models.ldamulticore import LdaMulticore
