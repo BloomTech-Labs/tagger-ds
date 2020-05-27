@@ -1,11 +1,3 @@
-# Email Retrieving Gateway
-#
-# TODO OOP
-#
-# Current build is proof of concept for retrieving email from gmail account.
-# Retrieves 1 email at a time. Next iteration will retrieve all emails since
-# last known retrieved pulldown.
-
 # Module imports / focused on Google API
 import base64
 from bs4 import BeautifulSoup
@@ -43,45 +35,36 @@ def get_user_emails(user_token):
     service = build('gmail', 'v1', credentials=creds)
 
     # Call the Gmail API
-    message = service.users().messages().list(userId='me').execute()
+    emails = service.users().messages().list(userId='me').execute()
 
-    return message
+    return emails
 
-def get_recent_id(message_body):
+def get_recent_id(emails):
     # Find most recent message
-    recent_msg_id = message_body['messages'][0]['id']
+    recent_msg_id = emails['messages'][0]['id']
     return recent_msg_id
 
 
-    # # Recent messages list
-    # message_tally = []
-    # for _ in range(len(message['messages'])):
-    #     message_tally.append(message['messages'][_]['id'])
-    #     if message['messages'][_]['id'] == previous_email_pull:
-    #         break
-    #
+def generate_tags(recent_msg_id):
+    """ Generates tags on the most recent email """
+
     # Call message content
     message_content = service.users().messages().get(
         userId='me', id=recent_msg_id).execute()
-    #print(message_content)
+
     # Call message body
     message_body = message_content['payload']['parts']
-    #message_body = message_content['payload']
     message_body_dict = dict(message_body[0])
-    #print("Message Body Dict:", message_body_dict)
 
     # Decode base64 encoding
     decode = message_body_dict['body']['data']
-    decodedContents = base64.urlsafe_b64decode(decode.encode('ASCII'))
-    #print(decodedContents)
+    decodedContents = base64.urlsafe_b64decode(decode.encode('utf-8'))
 
     # Clean the text
     text = BeautifulSoup(decodedContents, 'html.parser')
     text = str(text.text)
     text = re.sub(r"http\S+", "", text)
     text = [text]
-
-    # Output
 
     # Load spacy model
     nlp = spacy.load('en_core_web_md')
@@ -113,8 +96,7 @@ def get_recent_id(message_body):
                  "st"]
 
     STOP_WORDS = nlp.Defaults.stop_words.union(my_stop_words)
-
-    stop = stopwords.words('english')
+    # stop = stopwords.words('english')
 
     # Shape text & tokenize
     df = pd.DataFrame(text, columns = ['email_body'])
@@ -138,14 +120,9 @@ def get_recent_id(message_body):
         tokens.append(doc_tokens)
     df['tokens'] = tokens
 
+    # Topic Modelling
     id2word = Dictionary(df['tokens'])
-
-    # Remove extremes
-    # Deprecated for tagger email / not useful in single emails
-    #id2word.filter_extremes(no_below=5, no_above=.98)
-
     corpus = [id2word.doc2bow(d) for d in df['tokens']]
-
     model = LdaMulticore(corpus=corpus,
                          id2word=id2word,
                          random_state=42,
@@ -170,5 +147,9 @@ def get_recent_id(message_body):
     # Return sorted smart tag list
     return(tags_list)
 
-
-    # topics = [' '.join(t[0:9]) for t in words]
+# # Recent messages list
+# message_tally = []
+# for _ in range(len(message['messages'])):
+#     message_tally.append(message['messages'][_]['id'])
+#     if message['messages'][_]['id'] == previous_email_pull:
+#         break
