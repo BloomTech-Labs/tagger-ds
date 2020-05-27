@@ -36,33 +36,29 @@ def load_user_token(token):
     user_token = json.loads(token)
     return user_token
 
-def main():
-    creds = None
-    with open('token.pickle', 'rb') as f:
-        data = pickle.load(f)
-    # The file token.pickle stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    # In production this authorization method will be handled through a JSON
-    # retrieved from the BE server.
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
+def get_user_emails(user_token):
+    """ Pulls down user emails """
 
+    creds = user_token
+    service = build('gmail', 'v1', credentials=creds)
 
     # Call the Gmail API
     message = service.users().messages().list(userId='me').execute()
 
+    return message
+
+
+
     # Find most recent message
     recent_msg_id = message['messages'][0]['id']
-    #print(recent_msg_id)
-    # Recent messages list
-    message_tally = []
-    for _ in range(len(message['messages'])):
-        message_tally.append(message['messages'][_]['id'])
-        if message['messages'][_]['id'] == previous_email_pull:
-            break
 
+    # # Recent messages list
+    # message_tally = []
+    # for _ in range(len(message['messages'])):
+    #     message_tally.append(message['messages'][_]['id'])
+    #     if message['messages'][_]['id'] == previous_email_pull:
+    #         break
+    #
     # Call message content
     message_content = service.users().messages().get(
         userId='me', id=recent_msg_id).execute()
