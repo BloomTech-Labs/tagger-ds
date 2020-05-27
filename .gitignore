@@ -116,3 +116,6 @@ Jay email functions/email_data.csv
 
 # VS Code Settings
 .vscode/
+
+# Google API client secret
+client_secret.json
