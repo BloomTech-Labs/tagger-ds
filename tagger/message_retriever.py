@@ -47,10 +47,11 @@ def get_user_emails(user_token):
 
     return message
 
-
-
+def get_recent_id(message_body):
     # Find most recent message
-    recent_msg_id = message['messages'][0]['id']
+    recent_msg_id = message_body['messages'][0]['id']
+    return recent_msg_id
+
 
     # # Recent messages list
     # message_tally = []
