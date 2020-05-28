@@ -5,6 +5,9 @@ from markdown import markdown as markd
 import markdown.extensions.fenced_code
 import markdown.extensions.codehilite
 from pygments.formatters import HtmlFormatter
+# Helper functions
+from .message_retriever import user_emails, recent_id, tag_recent
+from .credentials import construct_creds
 
 @app.route('/', methods=['GET'])
 def index():
@@ -36,15 +39,21 @@ def sync():
     """ Accepts POST request from application for email sync """
 
     # Get request args from POST
-    provider = request.args.get('provider')
-    uid = request.args.get('uid')
-    token = request.args.get('token') # authentication token
+    content = request.get_json()
 
     # Gmail handoff ->
-    # TODO add function that takes Credentials for gmail synchronization
+    if content['provider'] == 'gmail':
 
-    def email_stream():
-        """ Generator for emails """
-        pass
+        # Create OAuth Credentials
+        creds = construct_creds(content['token'])
 
-    return Response(email_stream(), mimetype="application/json")
+        # Get some emails
+        message_list = user_emails(creds)
+        recent = recent_id(message_list)
+        # tags = tag_recent(recent)
+
+        return recent
+
+    else:
+
+        return "This functionality has not been created, yet."
