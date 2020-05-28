@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import json
 import re
 import pandas as pd
+from collections import Counter
 from googleapiclient.discovery import build
 from gensim.corpora import Dictionary
 from gensim.models.ldamulticore import LdaMulticore
@@ -15,22 +16,14 @@ from spacy.lang.en.stop_words import STOP_WORDS
 from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
 
-
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 previous_email_pull = '172317ca92683d33'
 
-def load_user_token(token):
-    """ Loads user token """
+def user_emails(creds):
+    """ Pulls user emails """
 
-    user_token = json.loads(token)
-    return user_token
-
-def get_user_emails(user_token):
-    """ Pulls down user emails """
-
-    creds = user_token
     service = build('gmail', 'v1', credentials=creds)
 
     # Call the Gmail API
@@ -38,13 +31,13 @@ def get_user_emails(user_token):
 
     return emails
 
-def get_recent_id(emails):
+def recent_id(emails):
     # Find most recent message
     recent_msg_id = emails['messages'][0]['id']
     return recent_msg_id
 
 
-def generate_tags(recent_msg_id):
+def tag_recent(recent_msg_id):
     """ Generates tags on the most recent email """
 
     # Call message content
@@ -127,7 +120,7 @@ def generate_tags(recent_msg_id):
                          random_state=42,
                          num_topics=10,
                          passes=8,
-                         workers=12)
+                         workers=(-2))
 
     # Generate topics from model
     words = [re.findall(r'"([^"]*)"', t[1]) for t in model.print_topics()]
