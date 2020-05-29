@@ -48,8 +48,13 @@ def tag_recent(recent_msg_id, creds):
         userId='me', id=recent_msg_id).execute()
 
     # Call message body
-    message_body = message_content['payload']['parts']
-    message_body_dict = dict(message_body[0])
+    message_payload = message_content['payload']
+    if "parts" in message_payload:
+        message_body = message_content['payload']['parts']
+        message_body_dict = dict(message_body[0])
+    else:
+        message_body = message_content['payload']['body']['data']
+        message_body_dict = dict(message_body[0])
 
     # Decode base64 encoding
     decode = message_body_dict['body']['data']
