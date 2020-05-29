@@ -37,8 +37,11 @@ def recent_id(emails):
     return recent_msg_id
 
 
-def tag_recent(recent_msg_id):
+def tag_recent(recent_msg_id, creds):
     """ Generates tags on the most recent email """
+
+    # Build service
+    service = build('gmail', 'v1', credentials=creds)
 
     # Call message content
     message_content = service.users().messages().get(
@@ -59,7 +62,7 @@ def tag_recent(recent_msg_id):
     text = [text]
 
     # Load spacy model
-    nlp = spacy.load('en_core_web_md')
+    nlp = spacy.load('en_core_web_sm')
 
     my_stop_words = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves',
                  'you', "you're", "you've", "you'll", "you'd", 'your', 'yours',

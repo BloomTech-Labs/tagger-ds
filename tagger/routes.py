@@ -50,10 +50,9 @@ def sync():
         # Get some emails
         message_list = user_emails(creds)
         recent = recent_id(message_list)
-        # tags = tag_recent(recent)
+        tags = tag_recent(recent, creds)
 
-        return recent
+        return tags
 
     else:
-
         return "This functionality has not been created, yet."
