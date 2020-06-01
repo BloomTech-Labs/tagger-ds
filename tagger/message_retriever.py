@@ -127,8 +127,7 @@ def tag_recent(recent_msg_id, creds):
                          id2word=id2word,
                          random_state=42,
                          num_topics=10,
-                         passes=8,
-                         workers=(-2))
+                         passes=8)
 
     # Generate topics from model
     words = [re.findall(r'"([^"]*)"', t[1]) for t in model.print_topics()]
