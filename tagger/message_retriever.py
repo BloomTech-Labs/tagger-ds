@@ -15,6 +15,7 @@ import string
 from spacy.lang.en.stop_words import STOP_WORDS
 from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
+from flask import jsonify
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
@@ -142,9 +143,11 @@ def tag_recent(recent_msg_id, creds):
     tags['length'] = range(len(tags))
     tags = tags.T
     tags_list = tags.columns
+    email_tags = {'tokens':[word for word in tags_list]}
+    email = {'email':decode, 'tokens':[word for word in tags_list]}
 
     # Return sorted smart tag list
-    return(tags_list)
+    return jsonify(email)
 
 # # Recent messages list
 # message_tally = []
