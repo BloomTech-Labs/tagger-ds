@@ -119,3 +119,6 @@ Jay email functions/email_data.csv
 
 # Google API client secret
 client_secret.json
+
+# zip for aws deployment
+*.zip
