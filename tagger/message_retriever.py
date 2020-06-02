@@ -144,13 +144,16 @@ def tag_recent(recent_msg_id, creds):
 
     # Topic Modelling
     id2word = Dictionary(df['tokens'])
+    print("Created Dictionary")
     corpus = [id2word.doc2bow(d) for d in df['tokens']]
+    print("created Corpus")
     model = LdaMulticore(corpus=corpus,
                          id2word=id2word,
                          random_state=42,
                          num_topics=10,
                          passes=1,
                          workers=1)
+    print("Created LDA Model")
 
     # PRINT 7
     print("Building tag list...")
