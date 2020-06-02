@@ -44,6 +44,9 @@ def tag_recent(recent_msg_id, creds):
     # Build service
     service = build('gmail', 'v1', credentials=creds)
 
+    # PRINT 1
+    print("Getting most recent message...")
+
     # Call message content
     message_content = service.users().messages().get(
         userId='me', id=recent_msg_id).execute()
@@ -57,6 +60,9 @@ def tag_recent(recent_msg_id, creds):
         message_body = message_content['payload']['body']['data']
         message_body_dict = dict(message_body[0])
 
+    # PRINT 2
+    print("Most recent message obtained. Decoding...")
+
     # Decode base64 encoding
     decode = message_body_dict['body']['data']
     decodedContents = base64.urlsafe_b64decode(decode.encode('utf-8'))
@@ -67,8 +73,14 @@ def tag_recent(recent_msg_id, creds):
     text = re.sub(r"http\S+", "", text)
     text = [text]
 
+    # PRINT 3
+    print("Decoded message body. Loading spacy small model...")
+
     # Load spacy model
     nlp = spacy.load('en_core_web_sm')
+
+    # PRINT 4
+    print("Spacy model loaded. Creating stop words list...")
 
     my_stop_words = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves',
                  'you', "you're", "you've", "you'll", "you'd", 'your', 'yours',
@@ -99,6 +111,9 @@ def tag_recent(recent_msg_id, creds):
     STOP_WORDS = nlp.Defaults.stop_words.union(my_stop_words)
     # stop = stopwords.words('english')
 
+    # PRINT 4
+    print("Generating email dataframe...")
+
     # Shape text & tokenize
     df = pd.DataFrame(text, columns = ['email_body'])
 
@@ -111,6 +126,9 @@ def tag_recent(recent_msg_id, creds):
     #Replace all non-overlapping matches
     df['email_body'] = df['email_body'].str.replace('[^a-zA-Z\s]', '').str.replace('\s+', ' ')
 
+    # PRINT 5
+    print("Tokenizing data...")
+
     # Generate NLP model
     tokens = []
     for doc in nlp.pipe(df['email_body'], batch_size=500):
@@ -121,6 +139,9 @@ def tag_recent(recent_msg_id, creds):
         tokens.append(doc_tokens)
     df['tokens'] = tokens
 
+    # PRINT 6
+    print("Modelling token data for Topics with LDA...")
+
     # Topic Modelling
     id2word = Dictionary(df['tokens'])
     corpus = [id2word.doc2bow(d) for d in df['tokens']]
@@ -128,7 +149,11 @@ def tag_recent(recent_msg_id, creds):
                          id2word=id2word,
                          random_state=42,
                          num_topics=10,
-                         passes=8)
+                         passes=8,
+                         workers=2)
+
+    # PRINT 7
+    print("Building tag list...")
 
     # Generate topics from model
     words = [re.findall(r'"([^"]*)"', t[1]) for t in model.print_topics()]
@@ -145,6 +170,9 @@ def tag_recent(recent_msg_id, creds):
     tags_list = tags.columns
     email_tags = {'tokens':[word for word in tags_list]}
     email = {'email':decode, 'tokens':[word for word in tags_list]}
+
+    # PRINT 8
+    print("Complete, returning json...")
 
     # Return sorted smart tag list
     return jsonify(email)
