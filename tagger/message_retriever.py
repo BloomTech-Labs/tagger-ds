@@ -149,8 +149,8 @@ def tag_recent(recent_msg_id, creds):
                          id2word=id2word,
                          random_state=42,
                          num_topics=10,
-                         passes=8,
-                         workers=2)
+                         passes=1,
+                         workers=1)
 
     # PRINT 7
     print("Building tag list...")
