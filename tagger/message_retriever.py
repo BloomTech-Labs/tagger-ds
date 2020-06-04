@@ -183,10 +183,16 @@ def generate_tagged_emails(service, email_gen):
 
         # Begin tagging logic
         message_payload = email['payload']
-        if 'parts' in message_payload:
-            message_body = message_payload['parts'][1]['body']['data']
-        else:
+        
+        if message_payload['mimeType'] == "text/plain":
             message_body = message_payload['body']['data']
+        elif message_payload['mimeType'] == "multipart/alternative":
+            message_body = message_payload['parts'][1]['body']['data']
+        elif message_payload['mimeType'] == "multipart/related":    
+            message_body = message_payload['parts'][0]['parts'][1]['body']['data'] 
+        else:
+            pass
+
 
         message_text = base64.urlsafe_b64decode(message_body.encode('utf-8'))
         text = re.sub(
