@@ -16,7 +16,7 @@ from gensim.corpora import Dictionary
 from spacy.lang.en.stop_words import STOP_WORDS
 from gensim.models.ldamulticore import LdaMulticore
 
-def preprocess_string(text):
+def preprocess_string(text: str) -> str:
     """Process a string for purpose of tagging.
 
     Args:
