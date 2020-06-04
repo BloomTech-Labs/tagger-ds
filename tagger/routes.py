@@ -1,13 +1,14 @@
+# Main imports
 import os
 from flask import current_app as app
 from flask import request, redirect, render_template, url_for, Response
+# Markdown imports
 from markdown import markdown as markd
 import markdown.extensions.fenced_code
 import markdown.extensions.codehilite
 from pygments.formatters import HtmlFormatter
-# Helper functions
-from .message_retriever import user_emails, recent_id, tag_recent
-from .credentials import construct_creds
+# App functions
+import tagger.message_retriever as msg
 
 @app.route('/', methods=['GET'])
 def index():
@@ -26,7 +27,7 @@ def docs():
         style="friendly", full=True, cssclass="codehilite"
     )
 
-    # generate codestyle
+    # Generate codestyle
     code_style = formatter.get_style_defs()
     style_string = f"<style>{code_style}</style>"
 
@@ -38,21 +39,25 @@ def docs():
 def sync():
     """ Accepts POST request from application for email sync """
 
-    # Get request args from POST
+    # Retrieve JSON body from request.
     content = request.get_json()
 
     # Gmail handoff ->
     if content['provider'] == 'gmail':
 
-        # Create OAuth Credentials
-        creds = construct_creds(content['token'])
+        # Create resource service
+        service = msg.build_service(content['token'])
 
-        # Get some emails
-        message_list = user_emails(creds)
-        recent = recent_id(message_list)
-        tags = tag_recent(recent, creds)
+        # Assign recent email id
+        recent_id = content['recent_id'] if content['recent_id'] else None
 
-        return tags
+        # Get list of email ids
+        email_list = msg.user_emails(service, recent_id)
+
+        # Create generator for individual emails
+        email_gen = msg.generate_emails(service, email_list)
+
+        return Response(msg.generate_tagged_emails(service, email_gen))
 
     else:
         return "This functionality has not been created, yet."
