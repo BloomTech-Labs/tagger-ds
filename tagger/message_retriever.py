@@ -33,7 +33,7 @@ def preprocess_string(text):
     )
     return text
 
-def tokenize_string(text, nlp):
+def tokenize_string(text: str, nlp) -> list:
     """Generate tokens for a given body of text.
 
     Args:
