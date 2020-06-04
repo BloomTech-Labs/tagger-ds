@@ -118,8 +118,7 @@ def user_emails(service, recent_id=None) -> list:
         emails from. None by default, which will pull all emails.
 
     Returns:
-        emails (list): A list of dictionaries that contain
-        the user's emails.
+        emails (list): A list that contains each requested email id.
     """
     email_list = list()
     # Grab first page of emails ids
@@ -134,9 +133,9 @@ def user_emails(service, recent_id=None) -> list:
             emails = service.users().messages().list(
                     userId='me', pageToken=emails['nextPageToken']
                 ).execute()
-            email_list = email_list + [x['id'] for x in emails['messages']]
 
-    if recent_id not None:
+
+    if recent_id is not None:
         idx = email_list.index(recent_id)
         email_list = email_list[:idx]
     return email_list
@@ -145,8 +144,8 @@ def generate_emails(service, id_list):
     """Generator object yielding individual emails.
 
     Args:
-        service (googleapiclient.discovery.Resource):
-        Resource Object used to query the Gmail API
+        service (googleapiclient.discovery.eesource):
+        Resource Object used to query the GMail API
         for an authorized user.
 
         id_list (list): List of email ids that will
@@ -177,13 +176,13 @@ def generate_tagged_emails(service, email_gen):
         email (dict): Dictionary containing the email data.
     """
 
-    nlp = space.load("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
     stopwords = STOP_WORDS # Stop words
 
     for email in email_gen:
 
         # Begin tagging logic
-        message_payload = message_content['payload']
+        message_payload = email['payload']
         if 'parts' in message_payload:
             message_body = message_payload['parts'][1]['body']['data']
         else:
@@ -202,4 +201,5 @@ def generate_tagged_emails(service, email_gen):
 
         email['smartTags'] = [word for word in tags_list]
 
-        yield email
+        yield json.dumps(email)
+

@@ -20,6 +20,7 @@ gensim = "*"
 nltk = "*"
 pandas = "*"
 beautifulsoup4 = "*"
+spacy = "*"
 
 [requires]
 python_version = "3.7"
