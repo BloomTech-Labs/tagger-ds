@@ -16,6 +16,7 @@ from gensim.corpora import Dictionary
 from spacy.lang.en.stop_words import STOP_WORDS
 from gensim.models.ldamulticore import LdaMulticore
 
+
 def preprocess_string(text: str) -> str:
     """Process a string for purpose of tagging.
 
@@ -32,6 +33,7 @@ def preprocess_string(text: str) -> str:
         '\s+', ' '
     )
     return text
+
 
 def tokenize_string(text: str, nlp) -> list:
     """Generate tokens for a given body of text.
@@ -52,7 +54,8 @@ def tokenize_string(text: str, nlp) -> list:
         tokens.append(doc_tokens)
     return tokens
 
-def generate_tags(tokens:list) -> list:
+
+def generate_tags(tokens: list) -> list:
     """Perform LDA Topic Modelling to aquire tags.
 
     Args:
@@ -74,7 +77,9 @@ def generate_tags(tokens:list) -> list:
     )
     words = [re.findall(r'"([^"]*)"', t[1]) for t in model.print_topics()]
     wordcount = Counter(words[0] + words[1] + words[2] + words[3] + words[4])
-    tags = pd.DataFrame.from_dict(wordcount, orient='index', columns=['number'])
+    tags = pd.DataFrame.from_dict(
+        wordcount, orient='index', columns=['number']
+        )
     tags = tags.drop(tags[tags['number'] <= 1].index)
     tags = tags.sort_values(by=['number'], ascending=False).T
     tags_list = [word for word in tags.columns]
@@ -106,8 +111,9 @@ def build_service(info: dict):
     service = build('gmail', 'v1', credentials=creds)
     return service
 
+
 def user_emails(service, recent_id=None) -> list:
-    """Retrive user emails.
+    """Retrieve user emails.
 
     Args:
         service (googleapiclient.discovery.Resource):
@@ -134,11 +140,11 @@ def user_emails(service, recent_id=None) -> list:
                     userId='me', pageToken=emails['nextPageToken']
                 ).execute()
 
-
     if recent_id is not None:
         idx = email_list.index(recent_id)
         email_list = email_list[:idx]
     return email_list
+
 
 def generate_emails(service, id_list):
     """Generator object yielding individual emails.
@@ -162,6 +168,7 @@ def generate_emails(service, id_list):
             )
     return generator
 
+
 def generate_tagged_emails(service, email_gen):
     """Tag recent emails
 
@@ -177,22 +184,21 @@ def generate_tagged_emails(service, email_gen):
     """
 
     nlp = spacy.load("en_core_web_sm")
-    stopwords = STOP_WORDS # Stop words
+    stopwords = STOP_WORDS  # Stop words
 
     for email in email_gen:
 
         # Begin tagging logic
         message_payload = email['payload']
-        
+
         if message_payload['mimeType'] == "text/plain":
             message_body = message_payload['body']['data']
         elif message_payload['mimeType'] == "multipart/alternative":
             message_body = message_payload['parts'][1]['body']['data']
-        elif message_payload['mimeType'] == "multipart/related":    
-            message_body = message_payload['parts'][0]['parts'][1]['body']['data'] 
+        elif message_payload['mimeType'] == "multipart/related":
+            message_body = message_payload['parts'][0]['parts'][1]['body']['data']
         else:
             pass
-
 
         message_text = base64.urlsafe_b64decode(message_body.encode('utf-8'))
         text = re.sub(
@@ -208,4 +214,3 @@ def generate_tagged_emails(service, email_gen):
         email['smartTags'] = [word for word in tags_list]
 
         yield json.dumps(email)
-
