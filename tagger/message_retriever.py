@@ -198,7 +198,7 @@ def generate_tagged_emails(service, email_gen):
         elif message_payload['mimeType'] == "multipart/related":
             message_body = message_payload['parts'][0]['parts'][1]['body']['data']
         else:
-            pass
+            message_body = message_payload['parts'][1]['body']['data']
 
         message_text = base64.urlsafe_b64decode(message_body.encode('utf-8'))
         text = re.sub(
