@@ -57,7 +57,8 @@ def sync():
         # Create generator for individual emails
         email_gen = msg.generate_emails(service, email_list)
 
-        return Response(msg.generate_tagged_emails(service, email_gen))
+        return Response(msg.generate_tagged_emails(service, email_gen),
+                        headers={"Content-Type": "application/json"})
 
     else:
         return "This functionality has not been created, yet."
