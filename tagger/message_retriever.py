@@ -139,10 +139,11 @@ def user_emails(service, recent_id=None) -> list:
             emails = service.users().messages().list(
                     userId='me', pageToken=emails['nextPageToken']
                 ).execute()
-
+            email_list.extend([x['id'] for x in emails['messages']])
+    email_list.reverse()
     if recent_id is not None:
         idx = email_list.index(recent_id)
-        email_list = email_list[:idx]
+        email_list = email_list[idx:]
     return email_list
 
 
