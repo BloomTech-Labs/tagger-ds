@@ -145,7 +145,6 @@ def user_emails(service, recent_id=None) -> list:
         idx = email_list.index(recent_id)
         email_list = email_list[:idx]
     email_list.reverse()
-    print(email_list)
     return email_list
 
 
