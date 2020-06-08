@@ -190,7 +190,6 @@ def generate_tagged_emails(service, email_gen):
 
     nlp = spacy.load("en_core_web_sm")
     stopwords = STOP_WORDS  # Stop words
-    print(email_gen)
     for email_obj in email_gen[0]:
         email = email_obj["email"]
         # Begin tagging logic
