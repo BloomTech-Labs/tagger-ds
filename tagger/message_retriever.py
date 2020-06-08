@@ -79,7 +79,7 @@ def generate_tags(tokens: list) -> list:
     wordcount = Counter(words[0] + words[1] + words[2] + words[3] + words[4])
     tags = pd.DataFrame.from_dict(
         wordcount, orient='index', columns=['number']
-        )
+    )
     tags = tags.drop(tags[tags['number'] <= 1].index)
     tags = tags.sort_values(by=['number'], ascending=False).T
     tags_list = [word for word in tags.columns]
@@ -129,21 +129,24 @@ def user_emails(service, recent_id=None) -> list:
     email_list = list()
     # Grab first page of emails ids
     emails = service.users().messages().list(
-            userId='me'
-        ).execute()
+        userId='me'
+    ).execute()
     email_list = [x['id'] for x in emails['messages']]
     while "nextPageToken" in emails.keys():
         if recent_id in email_list:
             break
         else:
             emails = service.users().messages().list(
-                    userId='me', pageToken=emails['nextPageToken']
-                ).execute()
+                userId='me', pageToken=emails['nextPageToken']
+            ).execute()
             email_list.extend([x['id'] for x in emails['messages']])
     email_list.reverse()
     if recent_id is not None:
-        idx = email_list.index(recent_id)
+        idx = next((index for (index, l) in enumerate(
+            email_list) if l["id"] == recent_id), None)
         email_list = email_list[idx:]
+    email_list = [{"id": id, "count": idx + 1}
+                  for idx, id in enumerate(email_list)]
     return email_list
 
 
@@ -162,12 +165,13 @@ def generate_emails(service, id_list):
         Generator that yields each individual email.
     """
     generator = (
-            service.users().messages().get(
-                userId='me', id=x
-                ).execute()
-            for x in id_list
-            )
-    return generator
+        {"count": x["count"],
+         "email": service.users().messages().get(
+            userId='me', id=x["id"]
+        ).execute()}
+        for x in id_list
+    )
+    return (generator, len(id_list))
 
 
 def generate_tagged_emails(service, email_gen):
@@ -186,9 +190,9 @@ def generate_tagged_emails(service, email_gen):
 
     nlp = spacy.load("en_core_web_sm")
     stopwords = STOP_WORDS  # Stop words
-
-    for email in email_gen:
-
+    print(email_gen)
+    for email_obj in email_gen[0]:
+        email = email_obj["email"]
         # Begin tagging logic
         message_payload = email['payload']
         mime_type = message_payload['mimeType']
@@ -214,5 +218,6 @@ def generate_tagged_emails(service, email_gen):
         tags_list = generate_tags(tokens)
 
         email['smartTags'] = [word for word in tags_list]
-
+        email['total_count'] = email_gen[1]
+        email['current_count'] = email_obj["count"]
         yield json.dumps(email)
