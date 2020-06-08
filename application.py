@@ -1,5 +1,11 @@
 from tagger import create_app
+import logging
+
+logging.basicConfig(
+    level=logging.DEBUG, format='%(relativeCreated)6d %(processName)s %(threadName)s %(message)s'
+)
 
 app = create_app()
+
 if __name__ == "__main__":
     app.run()
