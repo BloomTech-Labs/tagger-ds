@@ -18,10 +18,12 @@ from datetime import datetime
 from google.oauth2.credentials import Credentials
 
 '''
-when we are able to get credentials from the front end this code will automatically run when the app starts.
+when we are able to get credentials from the front end this code
+will automatically run when the app starts.
 
+This file requires test credentials named test_creds.json in this
+format, in the same folder,
 
-This file requires test credentials named test_creds.json in this format, in the same folder, 
 {
     "provider": "gmail",
     "token": {
@@ -40,6 +42,7 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 previous_email_pull = '172317ca92683d33'
 
+
 def user_emails(creds):
     """ Pulls user emails """
 
@@ -50,10 +53,12 @@ def user_emails(creds):
 
     return emails
 
+
 def recent_id(emails):
     # Find most recent message
     recent_msg_id = emails['messages'][0]['id']
     return recent_msg_id
+
 
 def construct_creds(info):
     """ Builds credentials from token info """
@@ -63,11 +68,13 @@ def construct_creds(info):
 
 creds = construct_creds(raw_creds['token'])
 
+
 def test_user_emails():
-    '''proves the the object retrieved with this function meets expected dimensions'''
+    '''proves object retrieved with this function meets expected dimensions'''
     message_list = user_emails(creds)
     assert len(message_list['messages']) == 100
     assert len(message_list) == 3
+
 
 def test_recent_id():
     '''proves the id retrieved with recent_id funtion is as expected'''

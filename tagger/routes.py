@@ -10,9 +10,11 @@ from pygments.formatters import HtmlFormatter
 # App functions
 import tagger.message_retriever as msg
 
+
 @app.route('/', methods=['GET'])
 def index():
     return redirect('/api/docs')
+
 
 @app.route('/api/docs', methods=['GET'])
 def docs():
@@ -34,6 +36,7 @@ def docs():
     return render_template(
         "docs.html", style_string=style_string, md_string=md_string
     )
+
 
 @app.route('/api/sync', methods=['POST'])
 def sync():
@@ -60,7 +63,8 @@ def sync():
         # Create generator for individual emails
         email_gen = msg.generate_emails(service, email_list)
 
-        return Response(msg.generate_tagged_emails(service, email_gen))
+        return Response(msg.generate_tagged_emails(service, email_gen),
+                        headers={"Content-Type": "application/json"})
 
     else:
         return "This functionality has not been created, yet."
