@@ -52,7 +52,10 @@ def sync():
         service = msg.build_service(content['token'])
 
         # Assign recent email id
-        recent_id = content['recent_id'] if 'recent_id' in content.keys() else None
+        if "recent_id" in content.keys():
+            recent_id = content['recent_id']
+        else:
+            recent_id = None
 
         # Get list of email ids
         email_list = msg.user_emails(service, recent_id)

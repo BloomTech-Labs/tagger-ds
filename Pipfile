@@ -21,6 +21,7 @@ nltk = "*"
 pandas = "*"
 beautifulsoup4 = "*"
 spacy = "*"
+spyder-kernels = "*"
 
 [requires]
 python_version = "3.7"
