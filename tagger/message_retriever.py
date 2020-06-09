@@ -93,6 +93,10 @@ def generate_tags(tokens: list) -> list:
     return tags_list
 
 
+def generate_sentiment():
+    pass
+
+
 def build_service(info: dict):
     """Function to build the Resource object.
 
@@ -219,6 +223,7 @@ def generate_tagged_emails(service, email_gen):
         text = preprocess_string(text)
         tokens = tokenize_string(text, nlp)
         tags_list = generate_tags(tokens)
+        sentiment_list = generate_sentiment(text)
 
         email['smartTags'] = [word for word in tags_list]
         email['total_count'] = email_gen[1]
