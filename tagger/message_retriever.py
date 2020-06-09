@@ -32,10 +32,17 @@ def preprocess_string(text: str) -> str:
     ).replace(
         '\s+', ' '
     )
-    return text
+    text = [text]
+    df = pd.DataFrame(text, columns=['email_body'])
+    df['email_body'] = df['email_body'].str.strip().str.lower()
+    df['email_body'].str.match('\d?\d/\d?\d/\d{4}').all()
+    df['email_body'] = df['email_body'].str.replace(
+        '[^a-zA-Z\s]', '').str.replace('\s+', ' ')
+    text = df['email_body']
+    return(text)
 
 
-def tokenize_string(text: str, nlp) -> list:
+def tokenize_string(text, nlp):
     """Generate tokens for a given body of text.
 
     Args:
@@ -83,7 +90,6 @@ def generate_tags(tokens: list) -> list:
     tags = tags.drop(tags[tags['number'] <= 1].index)
     tags = tags.sort_values(by=['number'], ascending=False).T
     tags_list = [word for word in tags.columns]
-
     return tags_list
 
 
@@ -193,15 +199,15 @@ def generate_tagged_emails(service, email_gen):
     for email_obj in email_gen[0]:
         email = email_obj["email"]
         # Begin tagging logic
-        message_payload = email['payload']
-        mime_type = message_payload['mimeType']
+        payload = email['payload']
+        mime_type = payload['mimeType']
 
         if re.match('^text/.+', mime_type):
-            message_body = message_payload['body']['data']
+            message_body = payload['body']['data']
         elif re.match("^multipart/alternative$", mime_type):
-            message_body = message_payload['parts'][1]['body']['data']
+            message_body = payload['parts'][1]['body']['data']
         elif re.match("^multipart/related$", mime_type):
-            message_body = message_payload['parts'][0]['parts'][1]['body']['data']
+            message_body = payload['parts'][0]['parts'][1]['body']['data']
         else:
             pass
 
