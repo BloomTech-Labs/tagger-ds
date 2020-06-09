@@ -148,11 +148,9 @@ def user_emails(service, recent_id=None) -> list:
             email_list.extend([x['id'] for x in emails['messages']])
     email_list.reverse()
     if recent_id is not None:
-        idx = next((index for (index, l) in enumerate(
-            email_list) if l["id"] == recent_id), None)
+        idx = email_list.index(recent_id)
         email_list = email_list[idx:]
-    email_list = [{"id": id, "count": idx + 1}
-                  for idx, id in enumerate(email_list)]
+    email_list = [{"id": id, "count": idx + 1} for idx, id in enumerate(email_list)]
     return email_list
 
 
