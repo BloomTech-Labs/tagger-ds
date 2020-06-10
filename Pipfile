@@ -22,6 +22,7 @@ pandas = "*"
 beautifulsoup4 = "*"
 spacy = "*"
 spyder-kernels = "*"
+vadersentiment = "*"
 
 [requires]
 python_version = "3.7"
