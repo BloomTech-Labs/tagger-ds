@@ -15,6 +15,8 @@ import spacy
 from gensim.corpora import Dictionary
 from spacy.lang.en.stop_words import STOP_WORDS
 from gensim.models.ldamulticore import LdaMulticore
+# SA
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
 def preprocess_string(text: str) -> str:
@@ -93,8 +95,30 @@ def generate_tags(tokens: list) -> list:
     return tags_list
 
 
-def generate_sentiment():
-    pass
+def generate_sentiment(text):
+    df = pd.DataFrame(text, columns=['email_body'])
+    analyzer = SentimentIntensityAnalyzer()
+
+    def vaderizeSentiment(sentence):
+        return analyzer.polarity_scores(sentence)
+    df['Scores'] = df['email_body'].apply(vaderizeSentiment)
+    df[['negative', 'neutral', 'positive', 'compound']] = df.Scores.apply(
+        pd.Series
+    )
+    Model = SentimentIntensityAnalyzer()
+
+    def score(sentence, Model):
+        return Model.polarity_scores(sentence)['compound']
+    df['final_score'] = df['email_body'].apply(lambda x: score(x, Model))
+    df['final_pred'] = pd.cut(
+        df['final_score'],
+        bins=5,
+        labels=[1, 2, 3, 4, 5]
+    )
+    df = df.drop('final_score', axis=1).sort_values(by=['final_pred']).iloc[:5]
+    return(float(df['negative'][0]), float(df['neutral'][0]),
+           float(df['positive'][0]), float(df['compound'][0]),
+           int(df['final_pred'][0]))
 
 
 def build_service(info: dict):
@@ -154,7 +178,8 @@ def user_emails(service, recent_id=None) -> list:
     if recent_id is not None:
         idx = email_list.index(recent_id)
         email_list = email_list[idx:]
-    email_list = [{"id": id, "count": idx + 1} for idx, id in enumerate(email_list)]
+    email_list = [{"id": id, "count": idx + 1} for idx,
+                  id in enumerate(email_list)]
     return email_list
 
 
@@ -226,6 +251,7 @@ def generate_tagged_emails(service, email_gen):
         sentiment_list = generate_sentiment(text)
 
         email['smartTags'] = [word for word in tags_list]
+        email['sentiment'] = [sentiment_list]
         email['total_count'] = email_gen[1]
         email['current_count'] = email_obj["count"]
         yield json.dumps(email)
