@@ -661,6 +661,14 @@
             ],
             "version": "==1.25.9"
         },
+        "vadersentiment": {
+            "hashes": [
+                "sha256:3bf1d243b98b1afad575b9f22bc2cb1e212b94ff89ca74f8a23a588d024ea311",
+                "sha256:5d7c06e027fc8b99238edb0d53d970cf97066ef97654009890b83703849632f9"
+            ],
+            "index": "pypi",
+            "version": "==3.3.2"
+        },
         "wasabi": {
             "hashes": [
                 "sha256:b8dd3e963cd693fde1eb6bfbecf51790171aa3534fa299faf35cf269f2fd6063",
@@ -674,6 +682,14 @@
                 "sha256:6c80b1e5ad3665290ea39320b91e1be1e0d5f60652b964a3070216de83d2e47c"
             ],
             "version": "==1.0.1"
+        },
+        "wurlitzer": {
+            "hashes": [
+                "sha256:86a510c0d34fcc9786ad1a9f557ac980f30ef2f821a75c2e4333311e0fd9cd76",
+                "sha256:eec7e3c779ddbf32d7e962ccc457580d1696f887e74ede45ebefaf6d12e7bf8f"
+            ],
+            "markers": "platform_system != 'Windows'",
+            "version": "==2.0.0"
         },
         "zipp": {
             "hashes": [

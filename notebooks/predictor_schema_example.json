@@ -1,0 +1,11 @@
+{
+    "id": < value > ,
+    "threadId": < value > ,
+    "mimeType": < value > ,
+    "from": < value > ,
+    "to": < value > ,
+    "subject": < value > ,
+    "date": < value > ,
+    "smartTags": < value > ,
+    "sentiment": < value >
+}
