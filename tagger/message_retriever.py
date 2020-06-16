@@ -247,7 +247,10 @@ def generate_tagged_emails(service, email_gen):
 
         text = preprocess_string(text)
         tokens = tokenize_string(text, nlp)
-        tags_list = generate_tags(tokens)
+        try:
+            tags_list = generate_tags(tokens)
+        except:
+            tags_list = []
         sentiment_list = generate_sentiment(text)
 
         email['smartTags'] = [word for word in tags_list]
