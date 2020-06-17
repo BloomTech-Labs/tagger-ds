@@ -254,7 +254,7 @@ def generate_tagged_emails(service, email_gen):
         sentiment_list = generate_sentiment(text)
 
         email['smartTags'] = [word for word in tags_list]
-        email['sentiment'] = [sentiment_list]
+        email['sentiment'] = sentiment_list
         email['total_count'] = email_gen[1]
         email['current_count'] = email_obj["count"]
         yield json.dumps(email)
