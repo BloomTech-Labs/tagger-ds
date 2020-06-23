@@ -12,12 +12,12 @@ You can find the data science API project at ``.
 |[Chris Filkins](https://github.com/filchyboy)|[Jack Lindberg](https://github.com/Jllin50)|
 [<img src="https://avatars3.githubusercontent.com/u/55597792?s=460&u=6b0d46f250e1e450c25cc32d692601d591f2b267&v=4" width="200">]()|[<img src="https://avatars1.githubusercontent.com/u/31583768?s=460&u=5d5f73d4382a2d9e54b78b97fa0b71e3621510fc&v=4" width="200">](https://github.com/Jllin50)|
 
-## Labs 20 Contributors 
+## Labs 20 Contributors
 |[Rosie Lasota](https://github.com/apathyhill)|[Jean Fraga](https://github.com/JeanFraga)|  
 |:---:|:---:|
 |[<img src="https://avatars3.githubusercontent.com/u/14889913?s=460&v=4" width="200" />](https://github.com/apathyhill)|[<img src="https://avatars3.githubusercontent.com/u/12549527?s=460&v=4" width="200" />](https://github.com/JeanFraga)|
 
-## Labs 18 Contributors 
+## Labs 18 Contributors
 |[Avraham Jacobsohn](https://github.com/noreallyimfine)|[John Morrison](https://github.com/JohnMorrisonn)|[Samuel Hepner](https://github.com/SamH3pn3r)|
 |:---:|:---:|:---:|
 |[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJJJCQN4R-3d9845ab1b54-512" width="200" />](https://github.com/noreallyimfine)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UL5V3G7A9-f4a14f4623d7-512" width="200" />](https://github.com/JohnMorrisonn)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width="200" />](https://github.com/SamH3pn3r)|
@@ -37,9 +37,9 @@ The idea of this project was to develop an email app similar to Gmail, Edison ma
 
  -   Language: [Python](https://docs.python.org/)
  -   Libraries: [Pandas](https://pandas.pydata.org/docs/), [Gensim](https://radimrehurek.com/gensim/), [GoogleAPI](https://developers.google.com/docs/api), [NLTK](https://www.nltk.org/), [Spacy](https://spacy.io/api/doc), [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), and [Flask](https://flask.palletsprojects.com/en/1.1.x/)
- -   Services: [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html)
+ -   Services: [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html), [Docker](https://www.docker.com/)
 
- 
+
 
 ### Predictions
 
@@ -51,7 +51,7 @@ Our production topic model uses a Spacy pipeline with a Gensim LDAMulticore mode
 
 ### Explanatory Variables
 
--   Text of the emails 
+-   Text of the emails
 
 ### Python Notebooks
 
@@ -60,15 +60,26 @@ Our production topic model uses a Spacy pipeline with a Gensim LDAMulticore mode
 This notebook contains 3 working models for producing smart tags. This work was done by Monica Bustamante.
 
 
-### How to connect to the data API
+### How to get emails from the API
 
-Send a POST request to http://tags2.us-east-2.elasticbeanstalk.com/api/tags with the arguments {'id', 'sender', 'subject', 'message'}
+**METHOD**: _POST_
+
+Type: application/json
+
+Data:
+
+```{
+  "provider": 'gmail',
+  "token": {
+    "refresh_token":'<google_auth_token>',
+    "client-id": <client_id>,
+    "client_secret": <client_secret>
+  }
+}```
 
 ## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
-
-Please note we have a [code of conduct](./code_of_conduct.md). Please follow it in all your interactions with the project.
 
 ### Issue/Bug Request
 
