@@ -187,7 +187,7 @@ def generate_emails(service, id_list):
     """Generator object yielding individual emails.
 
     Args:
-        service (googleapiclient.discovery.eesource):
+        service (googleapiclient.discovery.resource):
         Resource Object used to query the GMail API
         for an authorized user.
 
