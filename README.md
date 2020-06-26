@@ -3,24 +3,12 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/04429dcdec013a7b9175/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/tagger-ds/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/04429dcdec013a7b9175/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/tagger-ds/test_coverage) ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg) [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
 
 
-You can find the data science API project at ``.
-
 ## Labs 24 Contributors
 |[Brandon Mulas](https://github.com/bmulas1535)|[Monica Bustamante](https://github.com/Moly-malibu)|
 |:---:|:---:|
 |[<img src="https://avatars3.githubusercontent.com/u/54636579?s=460&u=d00932d4a8f2179dd262f9e934d125adda505d2c&v=4" width="200">](https://github.com/bmulas1535)|[<img src="https://avatars0.githubusercontent.com/u/58006376?s=460&u=8382c603014ddf685cf7886ecc1f62e6429b9626&v=4" width="200">](https://github.com/Moly-malibu)|
 |[Chris Filkins](https://github.com/filchyboy)|[Jack Lindberg](https://github.com/Jllin50)|
 [<img src="https://avatars3.githubusercontent.com/u/55597792?s=460&u=6b0d46f250e1e450c25cc32d692601d591f2b267&v=4" width="200">]()|[<img src="https://avatars1.githubusercontent.com/u/31583768?s=460&u=5d5f73d4382a2d9e54b78b97fa0b71e3621510fc&v=4" width="200">](https://github.com/Jllin50)|
-
-## Labs 20 Contributors
-|[Rosie Lasota](https://github.com/apathyhill)|[Jean Fraga](https://github.com/JeanFraga)|  
-|:---:|:---:|
-|[<img src="https://avatars3.githubusercontent.com/u/14889913?s=460&v=4" width="200" />](https://github.com/apathyhill)|[<img src="https://avatars3.githubusercontent.com/u/12549527?s=460&v=4" width="200" />](https://github.com/JeanFraga)|
-
-## Labs 18 Contributors
-|[Avraham Jacobsohn](https://github.com/noreallyimfine)|[John Morrison](https://github.com/JohnMorrisonn)|[Samuel Hepner](https://github.com/SamH3pn3r)|
-|:---:|:---:|:---:|
-|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJJJCQN4R-3d9845ab1b54-512" width="200" />](https://github.com/noreallyimfine)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UL5V3G7A9-f4a14f4623d7-512" width="200" />](https://github.com/JohnMorrisonn)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width="200" />](https://github.com/SamH3pn3r)|
 
 
 ## Project Overview
@@ -41,13 +29,14 @@ The idea of this project was to develop an email app similar to Gmail, Edison ma
 
 
 
-### Predictions
+### Models & APIs
 
-Our production topic model uses a Spacy pipeline with a Gensim LDAMulticore modeler and an NLTK tokenizer. The output from this model is run through multiple iterations, the results are weighted for frequency, and a descending sort is applied. The final output is a clean sorted list of smart tags that apply per email. This list of tags is packaged in a JSON object delivered to the electron application on the user's desktop.
+The Tagger Data Science team put together 2 API points: one which resides in the cloud on a flask application within Amazon Web Services and the other, which lies internally within a stand-alone desktop Electron application. The Tagger cloud-based API pulls emails from the Google API. Our API then cleans these emails and runs them through an NLP (Spacy) pipeline using a latent Dirichlet allocation (a Gensim LDAMulticore modeler) to derive a topic set. Those topics are then weighted by frequency and paired with concurrent VADER Sentiment Analysis. All of this is packaged up in JSON for retrieval by the desktop application. The data science API for the desktop application, in turn, receives search requests from the end-user and searches the database of email "smart tags" to find a list of relevant email IDs, which are then output to the desktop application for presentation at the user level.  
+
 
 ### Data Sources
 
--   Private User E-mails
+-   Private User E-mails within Gmail accounts. The developer can apply their own credentials using googleAuth.js. [Instructions]()
 
 ### Explanatory Variables
 
@@ -57,10 +46,13 @@ Our production topic model uses a Spacy pipeline with a Gensim LDAMulticore mode
 
 [Smart Tag Model Hyperparameter Optimization and Training](https://github.com/Lambda-School-Labs/tagger-ds/blob/master/SmartEmailTags.ipynb)
 
-This notebook contains 3 working models for producing smart tags. This work was done by Monica Bustamante.
-
+This notebook contains 3 working models for producing smart tags. 
 
 ### How to get emails from the API
+
+You can find the data science web API endpoint for retrieving emails at: `http://taggermail-env.eba-ip2ksqmm.us-east-1.elasticbeanstalk.com/api/`
+
+Please note there is also a data science application API endpoint internal to the desktop application.
 
 **METHOD**: _POST_
 
@@ -68,14 +60,31 @@ Type: application/json
 
 Data:
 
-```{
-  "provider": 'gmail',
-  "token": {
-    "refresh_token":'<google_auth_token>',
-    "client-id": <client_id>,
-    "client_secret": <client_secret>
-  }
-}```
+```
+{
+   	"provider": "gmail",
+	"recent_id": "<recent_id>",
+   	"token": {
+        "refresh_token": "<google_auth_token>",
+        "client_id": "<client_id>",
+        "client_secret": "<client_secret>"
+    }
+}
+```
+
+
+## Labs 20 Contributors
+|[Rosie Lasota](https://github.com/apathyhill)|[Jean Fraga](https://github.com/JeanFraga)|  
+|:---:|:---:|
+|[<img src="https://avatars3.githubusercontent.com/u/14889913?s=460&v=4" width="200" />](https://github.com/apathyhill)|[<img src="https://avatars3.githubusercontent.com/u/12549527?s=460&v=4" width="200" />](https://github.com/JeanFraga)|
+
+## Labs 18 Contributors
+|[Avraham Jacobsohn](https://github.com/noreallyimfine)|[John Morrison](https://github.com/JohnMorrisonn)|[Samuel Hepner](https://github.com/SamH3pn3r)|
+|:---:|:---:|:---:|
+|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJJJCQN4R-3d9845ab1b54-512" width="200" />](https://github.com/noreallyimfine)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UL5V3G7A9-f4a14f4623d7-512" width="200" />](https://github.com/JohnMorrisonn)|[<img src="https://ca.slack-edge.com/T4JUEB3ME-UJ5GAHMS7-abc28b1e9d94-512" width="200" />](https://github.com/SamH3pn3r)|
+
+
+
 
 ## Contributing
 
@@ -113,9 +122,8 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](https://github.com/Lambda-School-Labs/tagger-be) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/tagger-electron-app) for details on the backend of our project.
 
-See [Front End Documentation](https://github.com/Lambda-School-Labs/tagger-fe) for details on the front end of our project.
 
 ## Additional Notes:
 More info on using badges [here](https://github.com/badges/shields)
