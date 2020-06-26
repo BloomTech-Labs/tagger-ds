@@ -36,7 +36,7 @@ The Tagger Data Science team put together 2 API points: one which resides in the
 
 ### Data Sources
 
--   Private User E-mails within Gmail accounts. The developer can apply their own credentials using 
+-   Private User E-mails within Gmail accounts. The developer can apply their own credentials using googleAuth.js. [Instructions]()
 
 ### Explanatory Variables
 
