@@ -4,8 +4,8 @@
 
 Lambda Labs 24 - M. Bustamante, J. Lindberg, B. Mulas, C. Filkins
 >>
-The Tagger Data Science team put together 2 API points: one which resides in the cloud on a flask application within Amazon Web Services and the other, which lies internally within a stand-alone desktop Electron application. The Tagger cloud-based API pulls emails from the Google API. Our API then cleans these emails and runs them through an NLP pipeline using a latent Dirichlet allocation to derive a topic set. Those topics are then weighted by frequency and paired with concurrent VADER Sentiment Analysis. All of this is packaged up in JSON for retrieval by the desktop application. The data science API for the desktop application, in turn, receives search requests from the end-user and searches the database of email "smart tags" to find a list of relevant email IDs, which are then output to the desktop application for presentation at the user level.  The Labs 24 data science team of Monica Bustamante, Jack Lindberg, Brandon Mulas, and Christopher Filkins has set a solid baseline for future teams' success.
-<<
+The Tagger Data Science team put together 2 API points: one which resides in the cloud on a flask application within Amazon Web Services and the other, which lies internally within a stand-alone desktop Electron application. The Tagger cloud-based API pulls emails from the Google API. Our API then cleans these emails and runs them through an NLP pipeline using a latent Dirichlet allocation to derive a topic set. Those topics are then weighted by frequency and paired with concurrent VADER Sentiment Analysis. All of this is packaged up in JSON for retrieval by the desktop application. The data science API for the desktop application, in turn, receives search requests from the end-user and searches the database of email "smart tags" to find a list of relevant email IDs, which are then output to the desktop application for presentation at the user level.
+>>
 
 ## Current Architecture
 Currently, the application tagging engine produces a 49% tagging accuracy for the end-user. Analysis [insert link]
