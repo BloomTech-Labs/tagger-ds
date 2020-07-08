@@ -15,7 +15,7 @@
 
 The idea of this project was to develop an email app similar to Gmail, Edison mail, Yahoo mail, etc. but with better organization to help you find emails easier. For the DS, we built an API that generates tags for all emails so they can be put into folders by the BE.
 
-[Trello Board](https://trello.com/b/39GG7MwY/tagger-smarter-email)
+[Trello Board](https://trello.com/b/w0o6xUNv/labs24-taggeremail)
 
 [Product Canvas](https://www.notion.so/Tagger-Smarter-Email-01673a2ed9e54cb8834b959ad39f7de2)
 
